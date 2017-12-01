@@ -19,12 +19,18 @@
           </ul>
           <div class="navLogin"> <!-- wrap login -->
             <?php
-              if (isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
+              if (isset($_SESSION['c_id']) ) {
+
+				echo '<a href="editProfile.php" style="float:left;padding-right:20px;">'.$_SESSION['c_uid'].'</a>';
                 echo '<form action="includes/logout.inc.php" method="post"> <!--LOGOUT-->
                         <button type="submit" name="submitLogout">Logout</button>
                       </form>';
-              }
-              else {
+              }elseif(isset($_SESSION['s_id'])){
+				echo '<a href="editProfile.php" >'.$_SESSION['s_uid'].'</a>';
+                echo '<form action="includes/logout.inc.php" method="post"> <!--LOGOUT-->
+                        <button type="submit" name="submitLogout">Logout</button>
+                      </form>';
+              }else {
                 echo '<form action="includes/login.inc.php" method="post"> <!--LOGIN-->
                         <input type="text" name="uid" placeholder="Username">
                         <input type="password" name="passwd" placeholder="Password">
@@ -38,3 +44,4 @@
         </div> <!-- end pageWrapper -->
       </nav>
     </header>
+	

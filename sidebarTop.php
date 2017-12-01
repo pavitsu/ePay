@@ -5,11 +5,11 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Popular product cus</a>
             <a href="#">Computer & Laptop</a>
-            <a href="#">Science</a>
-            <a href="#">Industry</a>
-            <a href="#">Art & Entertainment</a>
-            <a href="#">Developer Profile</a>
-            <a href="loginSup.php">Supplier Login</a>
+            <a href="#">Storage</a>
+            <a href="#">Display</a>
+            <a href="#">Audio</a>
+            <a href="#">Accessory</a>
+			<a href="#">Cart</a>
           </div>';
   }
   elseif (isset($_SESSION['s_id'])) { //Seller page
@@ -28,10 +28,10 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Popular product</a>
             <a href="#">Computer & Laptop</a>
-            <a href="#">Science</a>
-            <a href="#">Industry</a>
-            <a href="#">Art & Entertainment</a>
-            <a href="#">Developer Profile</a>
+            <a href="#">Storage</a>
+            <a href="#">Display</a>
+            <a href="#">Audio</a>
+            <a href="#">Accessory</a>
             <a href="loginSup.php">Supplier Login</a>
           </div>';
   }

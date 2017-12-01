@@ -8,7 +8,7 @@
     <?php
 
       $sid = $_SESSION['s_id'];
-      $pid = 2;
+      $pid = $_GET['pid'];
       include_once('includes/dbh.inc.php');
       $sql = "SELECT * FROM product WHERE Product_ID = ?;";
       $stmt = mysqli_stmt_init($conn);
@@ -41,8 +41,9 @@
                   <span class="checkmark"></span>
                   </label>
                   <label class="container">No
-                  <input type="radio" name="radio" value="refundNo">
-                  <span class="checkmark"></span>
+                  <input type="radio" name="radio" value="refundNo">';
+		echo		  '<input type="hidden" name="pid" value='.$pid.'>';
+         echo         '<span class="checkmark"></span>
                 </label>';
 
         echo    '<div class="change"><button type="submit" name="submitEdit">Edit</button></div>';

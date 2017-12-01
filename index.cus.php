@@ -13,7 +13,7 @@
       while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
-        echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="max-width:200px;max-height:300px;">';
+        echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
         echo '<h1>'.$row['Description'].'</h1>';
         echo '<p class="title">'.$row['Price'].'</p>';
         echo '<p>'.$row['Quantity'].'</p>';

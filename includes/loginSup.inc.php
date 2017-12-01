@@ -37,7 +37,7 @@ if (isset($_POST['submitLoginSup'])) {
           $_SESSION['s_first'] = $row['Firstname'];
           $_SESSION['s_last'] = $row['Lastname'];
           $_SESSION['s_email'] = $row['Email'];
-          $_SESSION['s_cid'] = $row['Company'];
+          $_SESSION['s_uid'] = $row['Company'];
 
           header("Location: ../index.php?login=success");
           exit();

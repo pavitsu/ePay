@@ -43,7 +43,7 @@
           echo    '<td>'.$row["Price"].'</td>';
           echo    '<td>'.$row["Quantity"].'</td>';
           echo    '<td>'.$row["RefundAvailable"].'</td>';
-          echo    '<td><a href="editdelproduct.sup.php">Edit</a></td>';
+          echo    '<td><a  href="editdelproduct.sup.php?pid='.$row["Product_ID"].'">Edit</a></td>';
           echo  '</tr>' ;
         }
       }
@@ -57,10 +57,10 @@
 <script>
   $(".use-address").click(function() {
     var $row = $(this).closest("tr");    // Find the row
-    var text = $row.find(".nr").text(); // Find the text
+    var $text = $row.find(".nr").text(); // Find the text
 
 
-    <?php echo "document.write(text)";?>
+    
 
   });
 </script>

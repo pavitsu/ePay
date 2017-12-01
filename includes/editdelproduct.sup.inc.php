@@ -27,11 +27,11 @@ if (isset($_POST['submitEdit'])) {
     else {
       session_start();
       $sid = $_SESSION['s_id'];
-      $pid = 2;
+      $pid = $_POST['pid'];
       $sql = "UPDATE product SET Name='$name', Description='$desc', Type='$type', Price='$price',
               Quantity='$quan', Discount='$disc', RefundAvailable='$refund' WHERE Product_ID='$pid';";
       mysqli_query($conn, $sql);
-      header("Location: ../editdelproduct.sup.php?editproduct=success");
+      header("Location: ../editproduct.sup.php?editproduct=success");
       exit();
     }
 

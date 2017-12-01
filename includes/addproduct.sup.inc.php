@@ -50,8 +50,8 @@ if (isset($_POST['submitAddProduct'])) {
             session_start();
             $sid = $_SESSION['s_id'];
 
-            $sql = "INSERT INTO product (Supplier_ID, Image, Name, Description, Type, Price, Quantity, Discount, RefundAvailable)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $sql = "INSERT INTO product (Supplier_ID, Image, Name, Description, Type, Price, Quantity, Discount, RefundAvailable,Date)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_DATE );";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
               echo "SQL error";

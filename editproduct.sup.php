@@ -7,14 +7,14 @@
   <div class="pageWrapper">
     <h2>Edit Product</h2>
 
-    <table>
+    <table class ="pure-table" style="margin:auto;padding-top:50px">
       <col width="10%">
       <col width="30%">
       <col width="18%">
       <col width="13%">
       <col width="14%">
       <col width="15%">
-
+      <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -23,6 +23,7 @@
         <th>Refund</th>
         <th>Edit</th>
       </tr>
+    </thead>
 
     <?php
       include_once('includes/dbh.inc.php');
@@ -36,9 +37,10 @@
         mysqli_stmt_bind_param($stmt, "s", $sid);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        echo '<tbody>';
         while ($row = mysqli_fetch_assoc($result)) {
           echo '<tr>';
-          echo   '<td class="nr">'.$row["Product_ID"].'</td>';
+          echo   '<td>'.$row["Product_ID"].'</td>';
           echo    '<td>'.$row["Name"].'</td>';
           echo    '<td>'.$row["Price"].'</td>';
           echo    '<td>'.$row["Quantity"].'</td>';
@@ -46,6 +48,7 @@
           echo    '<td><a  href="editdelproduct.sup.php?pid='.$row["Product_ID"].'">Edit</a></td>';
           echo  '</tr>' ;
         }
+        echo '</tbody>';
       }
     ?>
     </table>
@@ -60,7 +63,7 @@
     var $text = $row.find(".nr").text(); // Find the text
 
 
-    
+
 
   });
 </script>

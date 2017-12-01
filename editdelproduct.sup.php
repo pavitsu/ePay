@@ -21,7 +21,7 @@
         $result = mysqli_stmt_get_result($stmt);
         $row = mysqli_fetch_assoc($result);
         echo '<h2>Profile</h2>';
-        echo '<form action="includes/editdelproduct.sup.inc.php" method="post">';
+        echo '<form class="pure-form pure-form-stacked" action="includes/editdelproduct.sup.inc.php" method="post">';
         echo    '<input type="text" name="name" placeholder="'.$row["Name"].'">';
         echo    '<textarea name="description" rows="6" cols="40" placeholder="'.$row["Description"].'"></textarea>';
         echo    '<p><strong>Type</strong></p>
@@ -32,9 +32,9 @@
                     <option value="DS">Display</option>
                     <option value="AC">Accessory</option>
                   </select>';
-        echo    '<input type="number" name="price" placeholder="'.$row["Price"].'">';
-        echo    '<input type="number" name="quantity" placeholder="'.$row["Quantity"].'">';
-        echo    '<input type="number" name="discount" placeholder="'.$row["Discount"].'">';
+        echo    '<strong>Price</strong> : <input type="number" name="price" placeholder="'.$row["Price"].'">';
+        echo    '<strong>Quantity</strong> : <input type="number" name="quantity" placeholder="'.$row["Quantity"].'">';
+        echo    '<strong>Discount</strong> : <input type="number" name="discount" placeholder="'.$row["Discount"].'">';
         echo    '<h3>Refund Available</h3>
                 <label class="container">Yes
                   <input type="radio" name="radio" value="refundYes" checked="checked">

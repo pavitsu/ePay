@@ -3,13 +3,13 @@
   if (isset($_SESSION['c_id'])) {
     echo '<div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="index.php">Popular product cus</a>
-            <a href="#">Computer & Laptop</a>
-            <a href="#">Storage</a>
-            <a href="#">Display</a>
-            <a href="#">Audio</a>
-            <a href="#">Accessory</a>
-			<a href="#">Cart</a>
+            <a href="index.php">Popular Product</a>
+            <a href="cat_pages/comlap.php">Computer & Laptop</a>
+            <a href="cat_pages/storage.php">Storage</a>
+            <a href="cat_pages/diaplay.php">Display</a>
+            <a href="cat_pages/audio.php">Audio</a>
+            <a href="cat_pages/accessory.php">Accessory</a>
+			      <a href="#">Cart</a>
           </div>';
   }
   elseif (isset($_SESSION['s_id'])) { //Seller page
@@ -36,6 +36,8 @@
           </div>';
   }
 ?>
+
+
 
 <link rel="stylesheet" type="text/css" href="style.css">
 <!-- page content that will shift right -->

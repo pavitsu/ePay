@@ -7,7 +7,7 @@
   <div class="pageWrapper">
     <h2>Edit Product</h2>
 
-    <table class ="pure-table" style="margin:auto;padding-top:50px">
+    <table class ="pure-table" style="margin:auto;margin-top:50px">
       <col width="10%">
       <col width="30%">
       <col width="18%">

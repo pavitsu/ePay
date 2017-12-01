@@ -14,7 +14,8 @@
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
         echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
-        echo '<h1>'.$row['Description'].'</h1>';
+        echo '<h1>'.$row['Name'].'</h1>';
+        echo '<p>'.$row['Description'].'</p>';
         echo '<p class="title">'.$row['Price'].'</p>';
         echo '<p>'.$row['Quantity'].'</p>';
         echo '<p><button>Shop</button></p>';
@@ -35,7 +36,7 @@
 ?>
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
   .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -47,12 +48,12 @@
     display: block;
   }
 
-  .title {
+  .card .title {
     color: grey;
     font-size: 18px;
   }
 
-  button {
+  .card button {
     border: none;
     outline: 0;
     display: inline-block;
@@ -65,13 +66,13 @@
     font-size: 18px;
   }
 
-  a {
+  .card a {
     text-decoration: none;
     font-size: 22px;
     color: black;
   }
 
-  button:hover, a:hover {
+  .card button:hover, a:hover {
     opacity: 0.7;
   }
 </style>

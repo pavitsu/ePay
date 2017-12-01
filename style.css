@@ -1,0 +1,314 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body {
+    line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+nav ul {
+    list-style:none;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+del {
+    text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+input, select {
+    vertical-align:middle;
+}
+
+/***************************************************/
+/********************* My Code *********************/
+/***************************************************/
+
+.pageWrapper {
+  margin: 0 auto; /* top, center */
+  width: 1000px;
+}
+a {
+  text-decoration: none; /* remove underline */
+}
+body { /* entire page */
+  background-color: #f2f2f2;
+  opacity: 0.8;
+  font-family: "Lato", sans-serif;
+}
+
+/************ header ************/
+header nav { /* header */
+  width: 100%;
+  height: 60px; /* header height */
+  background-color: #b3ffff; /* white */
+  opacity: 0.8;
+}
+header nav ul { /* epay logo */
+  float: left;
+}
+header nav ul li { /* epay logo */
+  float: left;
+  list-style: none; /* no bullet point */
+}
+header nav ul li a { /* epay logo */
+  font-family: arial;
+  font-size: 16px;
+  color: #111; /* dark grey */
+  line-height: 63px; /* center on header height */
+}
+
+header .navLogin {
+  float: right;
+}
+header .navLogin form {
+  float: left;
+  padding-top: 15px;
+}
+header .navLogin form input {
+  float: left;
+  width: 140px;
+  height: 30px; /* 15 padding + 30 height + 15 padding = header height */
+  padding: 0px 10px; /* typing input */
+  margin-right: 10px;
+  border: none;
+  background-color: #ccc;
+  font-family: arial;
+  font-size: 14px;
+  color: #111; /* dark grey */
+  line-height: 30px; /* center on header height */
+}
+header .navLogin form button { /* login button */
+  float: left;
+  width: 60px;
+  height: 30px; /* 15 padding + 30 height + 15 padding = header height */
+  margin-right: 10px;
+  border: none;
+  background-color: #ccc;
+  font-family: arial;
+  font-size: 14px;
+  color: #111; /* dark grey */
+  cursor: pointer;
+}
+header .navLogin form button:hover {
+  background-color: #ccc;
+}
+header .navLogin a { /* signup button */
+  display: block;
+  width: 60px;
+  height: 60px;
+  border: none;
+  float: left;
+  background-color: transparent;
+  font-family: arial;
+  font-size: 16px;
+  color: #111; /* dark grey */
+  line-height: 63px; /* center on header height */
+  cursor: pointer;
+}
+/* END HEADER STYLE */
+
+/************ Container ************/
+.pageContainer {
+  padding-top: 0px; /* 40px from header */
+}
+.pageContainer h2 {
+  font-family: arial;
+  font-size: 40px;
+  color: #111; /* dark grey */
+  line-height: 50px;
+  text-align: center;
+}
+/* END Container */
+
+/************ Signup Form ************/
+.signupForm {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 30px; /* from h2 */
+}
+.signupForm h3 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 22px;
+}
+.signupForm input {
+  width: 95%; /* inside signup form */
+  height: 40px;
+  padding: 0px 5%; /* typing input */
+  margin-bottom: 4px; /* between each input */
+  border: none;
+  background-color: #fff;
+  font-family: arial;
+  font-size: 16px;
+  color: #111; /* dark grey */
+  line-height: 40px; /* inside 40px height */
+}
+.signupForm button {
+  display: block; /* stacking */
+  margin: 10px auto;
+  width: 35%; /* inside signup form */
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: #222;
+  font-family: arial;
+  font-size: 16px;
+  color: #ccc; /* dark grey */
+  cursor: pointer;
+}
+.signupForm button:hover {
+  background-color: #111;
+}
+/* END SIGNUP STYLE */
+
+/************ Sidebar ************/
+/* The sidebar navigation menu */
+.sidenav {
+  margin-top: 60px;
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #818181;
+  display: block;
+  transition: 0.3s
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+  color: #f1f1f1;
+}
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* END SIDEBAR */
+
+/* add product */
+.addProduct {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.addProduct input {
+  width: 90%;
+  height: 40px;
+  margin-bottom: 6px;
+  padding: 0px 5%; /* top-buttom  left-right */
+  border: none;
+  background-color: #fff;
+  font-family: arial;
+  font-size: 16px;
+  color: #111;
+  line-height: 40px;
+}
+.addProduct button {
+  display: block;
+  margin: 10px auto; /* move button to the middle */
+  width: 45%;
+  height: 40px;
+  border: none;
+  background-color: #222;
+  font-family: arial;
+  font-size: 16px;
+  color: #fff;
+  line-height: 40px;
+  cursor: pointer;
+}
+.addProduct button:hover {
+  background-color: #111;
+}
+/* END ADD PRODUCT */

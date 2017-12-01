@@ -14,8 +14,7 @@
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
         echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
-        echo '<h1>'.$row['Name'].'</h1>';
-        echo '<p>'.$row['Description'].'</p>';
+        echo '<h1>'.$row['Description'].'</h1>';
         echo '<p class="title">'.$row['Price'].'</p>';
         echo '<p>'.$row['Quantity'].'</p>';
         echo '<p><button>Shop</button></p>';
@@ -24,9 +23,6 @@
       }
     ?>
 
-
-
-
   </div>
 </section>
 
@@ -34,8 +30,6 @@
   include_once('sidebarBottom.php');
   include_once('footer.php');
 ?>
-
-
 
 <style>
   .card {
@@ -48,12 +42,12 @@
     display: block;
   }
 
-  .card .title {
+  .title {
     color: grey;
     font-size: 18px;
   }
 
-  .card button {
+  button {
     border: none;
     outline: 0;
     display: inline-block;
@@ -66,13 +60,13 @@
     font-size: 18px;
   }
 
-  .card a {
+  a {
     text-decoration: none;
     font-size: 22px;
     color: black;
   }
 
-  .card button:hover, a:hover {
+  button:hover, a:hover {
     opacity: 0.7;
   }
 </style>

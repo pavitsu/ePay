@@ -4,11 +4,11 @@
     echo '<div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Popular Product</a>
-            <a href="cat_pages/comlap.php">Computer & Laptop</a>
-            <a href="cat_pages/storage.php">Storage</a>
-            <a href="cat_pages/diaplay.php">Display</a>
-            <a href="cat_pages/audio.php">Audio</a>
-            <a href="cat_pages/accessory.php">Accessory</a>
+            <a href="comlap.php">Computer & Laptop</a>
+            <a href="storage.php">Storage</a>
+            <a href="display.php">Display</a>
+            <a href="audio.php">Audio</a>
+            <a href="accessory.php">Accessory</a>
 			      <a href="#">Cart</a>
           </div>';
   }

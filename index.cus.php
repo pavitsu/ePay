@@ -4,8 +4,14 @@
 ?>
 
 <section class="pageContainer">
+  <a class="pure-button" href="#" style="float:right;margin-right:80px;">
+    <i class="fa fa-shopping-cart fa-lg"></i>
+    Checkout
+  </a>
   <div class="pageWrapper" style="overflow:scroll;">
     <h2>Customer</h2>
+
+
 
     <?php
       $sql = "SELECT * FROM product;";
@@ -18,6 +24,7 @@
         echo '<p class="title">'.$row['Price'].'</p>';
         echo '<p>'.$row['Quantity'].'</p>';
         echo '<p><button>Shop</button></p>';
+        echo '<input type="number" name="amount" placeholder="No.">';
         echo '</div>';
         echo '</div>';
       }
@@ -56,10 +63,16 @@
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 100%;
+    width: 68%;
+    float: left;
     font-size: 18px;
   }
-
+  input {
+    float: left;
+    width: 29%;
+    height: 30px;
+    display: inline-block;
+  }
   a {
     text-decoration: none;
     font-size: 22px;

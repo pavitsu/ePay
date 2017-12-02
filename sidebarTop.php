@@ -9,7 +9,6 @@
             <a href="display.php">Display</a>
             <a href="audio.php">Audio</a>
             <a href="accessory.php">Accessory</a>
-			      <a href="#">Cart</a>
           </div>';
   }
   elseif (isset($_SESSION['s_id'])) { //Seller page

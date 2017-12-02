@@ -38,6 +38,12 @@ if (isset($_POST['submitLogin'])) {
           $_SESSION['c_last'] = $row['Lastname'];
           $_SESSION['c_email'] = $row['Email'];
           $_SESSION['c_uid'] = $row['Username'];
+          $_SESSION['c_bir'] = $row['Birhtday'];
+          $_SESSION['c_addr1'] = $row['Address1'];
+          $_SESSION['c_addr2'] = $row['Address2'];
+          $_SESSION['c_zip'] = $row['Zip'];
+          $_SESSION['c_pho'] = $row['Phone'];
+          $_SESSION['c_email'] = $row['Email'];
 
           header("Location: ../index.php?login=success");
           exit();

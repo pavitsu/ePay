@@ -24,8 +24,8 @@
       else {
     ?>
     <section class="pageContainer">
-      <a class="pure-button" href="#" style="float:right;margin-right:80px;">
-        <i class="fa fa-shopping-cart fa-lg"></i>
+      <a class="pure-button"  onclick="myFunction()" style="float:right;margin-right:80px;">
+        <i class="fa fa-shopping-cart fa-lg"  ></i>
         Checkout
       </a>
       <div class="pageWrapper" style="overflow:scroll;">

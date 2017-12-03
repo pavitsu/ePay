@@ -52,12 +52,23 @@ if (isset($_POST['submitChangeCus'])) {
           //Hashing the password
           $hashedPwd = password_hash($passwd, PASSWORD_DEFAULT);
           $cid = $_SESSION['c_id'];
+
           //Insert the user into the database
-          $sql = "UPDATE customer SET Firstname='$first', Lastname='$last', Username='$usern', Birthday='$birthday', Address1='$addr1',
-                                      Address2='$addr2', Zip='$zip', Phone='$phone', Email='$email', Password='$hashedPwd' WHERE Customer_ID='$cid';";
-          mysqli_query($conn, $sql);
-          header("Location: ../editProfile.php?editProfile=success");
-          exit();
+          $sql = "UPDATE customer SET Firstname = ?, Lastname = ?, Username = ?, Birthday = ?, Address1 = ?,
+                                      Address2 = ?, Zip = ?, Phone = ?, Email = ?, Password = ? WHERE Customer_ID='$cid';";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL error";
+          }
+          else {
+            //Bind parameters to the place holder
+            mysqli_stmt_bind_param($stmt, "ssssssiiss", $first, $last, $usern, $birthday, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
+            //Run parameters inside database
+            mysqli_stmt_execute($stmt);
+
+            header("Location: ../editProfile.php?editProfile=success");
+            exit();
+          }
         }
       }
     }
@@ -117,11 +128,22 @@ elseif (isset($_POST['submitChangeSup'])) {
 
           $sid = $_SESSION['s_id'];
           //Insert the user into the database
+
           $sql = "UPDATE supplier SET Firstname='$first', Lastname='$last', Username='$uname', Company='$comp', Address1='$addr1',
-                                      Address2='$addr2', Zip='$zip', Phone='$phone', Email='$email', Password='$passwd' WHERE Supplier_ID='$sid';";
-          mysqli_query($conn, $sql);
-          header("Location: ../editProfile.php?editProfile=success");
-          exit();
+                          Address2='$addr2', Zip='$zip', Phone='$phone', Email='$email', Password='$passwd' WHERE Supplier_ID='$sid';";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL error";
+          }
+          else {
+            //Bind parameters to the place holder
+            mysqli_stmt_bind_param($stmt, "ssssssiiss", $first, $last, $usern, $comp, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
+            //Run parameters inside database
+            mysqli_stmt_execute($stmt);
+
+            header("Location: ../editProfile.php?editProfile=success");
+            exit();
+          }
         }
       }
     }

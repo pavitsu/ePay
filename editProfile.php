@@ -154,17 +154,13 @@
       else {
         echo "string";
       }
-
     ?>
-
-
 
   </div>
 </section>
 
 
 <style scoped>
-
   .button-success,
   .button-delete,
   .button-warning,

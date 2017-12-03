@@ -3,17 +3,27 @@
   include_once('sidebarTop.php');
 ?>
 
-<?php
-  if (isset($_SESSION['c_id'])) {
-    include_once('index.cus.php');
-  }
-  elseif (isset($_SESSION['s_id'])) {
-    include_once('index.sup.php');
-  }
-  else {
-    include_once('index.blank.php');
-  }
-?>
+<section class="pageContainer">
+  <div class="pageWrapper" style="overflow:scroll;">
+    <h2>Customer</h2>
+
+    <?php
+      $sql = "SELECT Image, Name, Price FROM product ORDER BY Product_ID DESC;";
+      $result = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="cardContainer" style="float: left;padding:20px;">';
+        echo '<div class="card">';
+        echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
+        echo '<h1>'.$row['Name'].'</h1>';
+        echo '<p class="title">'.$row['Price'].'</p>';
+        echo '<p><button>Add to Cart</button></p>';
+        echo '</div>';
+        echo '</div>';
+      }
+    ?>
+
+  </div>
+</section>
 
 <?php
   include_once('sidebarBottom.php');
@@ -37,7 +47,6 @@
     color: grey;
     font-size: 18px;
   }
-
   button {
     border: none;
     outline: 0;
@@ -55,10 +64,7 @@
     font-size: 22px;
     color: black;
   }
-
   button:hover, a:hover {
     opacity: 0.7;
   }
 </style>
-
-

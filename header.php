@@ -17,6 +17,19 @@
   <body>
     <header>
       <nav>
+      <?php
+        if(isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
+          echo '<a class="pure-button" style="float:right;margin-right:40px;margin-top:12.5px;">
+                  <i class="fa fa-shopping-cart fa-lg"  ></i>
+                  Checkout
+                </a>';
+        } else {
+          echo '<a class="pure-button" onclick="myFunction()" style="float:right;margin-right:40px;margin-top:12.5px;">
+                  <i class="fa fa-shopping-cart fa-lg"  ></i>
+                  Checkout
+                </a>';
+        }
+      ?>
         <div class="pageWrapper">
           <ul>
             <li><a href="index.php">epay</a></li>
@@ -48,3 +61,10 @@
         </div> <!-- end pageWrapper -->
       </nav>
     </header>
+
+
+<script>
+  function myFunction() {
+      alert("Please, Sign up or Log-in before you continue.");
+  }
+</script>

@@ -4,14 +4,8 @@
 ?>
 
 <section class="pageContainer">
-  <a class="pure-button" href="#" style="float:right;margin-right:80px;">
-    <i class="fa fa-shopping-cart fa-lg"></i>
-    Checkout
-  </a>
   <div class="pageWrapper" style="overflow:scroll;">
     <h2>Customer</h2>
-
-
 
     <?php
       $sql = "SELECT * FROM product;";
@@ -53,7 +47,6 @@
     color: grey;
     font-size: 18px;
   }
-
   button {
     border: none;
     outline: 0;
@@ -71,7 +64,6 @@
     font-size: 22px;
     color: black;
   }
-
   button:hover, a:hover {
     opacity: 0.7;
   }

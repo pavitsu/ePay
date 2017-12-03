@@ -15,9 +15,9 @@
       }
       else {
         echo '<h2>epay</h2>';
-        echo "string";
       }
     ?>
+
   </div>
 </section>
 

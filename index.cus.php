@@ -20,11 +20,9 @@
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
         echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
-        echo '<h1>'.$row['Description'].'</h1>';
+        echo '<h1>'.$row['Name'].'</h1>';
         echo '<p class="title">'.$row['Price'].'</p>';
-        echo '<p>'.$row['Quantity'].'</p>';
-        echo '<p><button>Shop</button></p>';
-        echo '<input type="number" name="amount" placeholder="No.">';
+        echo '<p><button>Add to Cart</button></p>';
         echo '</div>';
         echo '</div>';
       }
@@ -48,7 +46,9 @@
     font-family: arial;
     display: block;
   }
-
+  h1, p {
+    padding: 5px;
+  }
   .title {
     color: grey;
     font-size: 18px;
@@ -63,15 +63,8 @@
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 68%;
-    float: left;
+    width: 100%;
     font-size: 18px;
-  }
-  input {
-    float: left;
-    width: 29%;
-    height: 30px;
-    display: inline-block;
   }
   a {
     text-decoration: none;

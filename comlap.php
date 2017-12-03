@@ -26,9 +26,8 @@
       while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
-        printCard($row['Image'], $row['Name'], $row['Description'], $row['Price'], $row['Quantity']);
-        echo '<p><button>Shop</button></p>';
-        echo '<input type="number" name="amount" placeholder="No.">';
+        printCard($row['Image'], $row['Name'], $row['Price']);
+        echo '<p><button>Add to Cart</button></p>';
         echo '</div>';
         echo '</div>';
       }
@@ -55,7 +54,9 @@
     font-family: arial;
     display: block;
   }
-
+  h1, p {
+    padding: 5px;
+  }
   .title {
     color: grey;
     font-size: 18px;
@@ -70,15 +71,8 @@
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 68%;
-    float: left;
+    width: 100%;
     font-size: 18px;
-  }
-  input {
-    float: left;
-    width: 29%;
-    height: 30px;
-    display: inline-block;
   }
   a {
     text-decoration: none;

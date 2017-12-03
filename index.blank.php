@@ -16,7 +16,7 @@
         echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
         echo '<h1>'.$row['Name'].'</h1>';
         echo '<p class="title">'.$row['Price'].'</p>';
-        echo '<p><button>Add to Cart</button></p>';
+        echo '<a href= "signup.php"><p><button>Add to Cart</button></p></a>';
         echo '</div>';
         echo '</div>';
       }

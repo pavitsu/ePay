@@ -17,6 +17,7 @@
   <body>
     <header>
       <nav>
+
       <?php
         if(isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
           echo '<a class="pure-button" style="float:right;margin-right:40px;margin-top:12.5px;">
@@ -30,6 +31,9 @@
                 </a>';
         }
       ?>
+
+      <span style="font-size:30px;cursor:pointer;float:left;margin-left:12.5px;margin-top:12.5px;" onclick="openNav()">&#9776;</span>
+      
         <div class="pageWrapper">
           <ul>
             <li><a href="index.php">epay</a></li>

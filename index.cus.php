@@ -8,7 +8,7 @@
     <h2>Customer</h2>
 
     <?php
-      $sql = "SELECT * FROM product;";
+      $sql = "SELECT Image, Name, Price FROM product ORDER BY Product_ID DESC;";
       $result = mysqli_query($conn, $sql);
       while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cardContainer" style="float: left;padding:20px;">';

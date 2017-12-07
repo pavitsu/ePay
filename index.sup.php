@@ -1,7 +1,7 @@
 <?php
   include_once('header.php');
   include_once('sidebarTop.php');
-  include_once('functions.php');
+  include_once('includes/functions.inc.php');
 ?>
 
 <section class="pageContainer">
@@ -13,7 +13,7 @@
 
     $sid = $_SESSION['s_id'];
 
-    $sql = "SELECT * FROM product WHERE Supplier_ID = ?;";
+    $sql = "SELECT Image, Name, Price, Quantity FROM product WHERE Supplier_ID = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       echo "SQL statement failed";
@@ -26,7 +26,10 @@
       while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
-        printCard($row['Image'], $row['Name'], $row['Description'], $row['Price'], $row['Quantity']);
+        echo '<img src="img_uploads/'.$row['Image'].'" alt="John" style="width:200px;height:150px;">';
+        echo '<h1>'.$row['Name'].'</h1>';
+        echo '<p class="title">'.$row['Price'].'</p>';
+        echo '<p>'.$row['Quantity'].'</p>';
         echo '</div>';
         echo '</div>';
       }

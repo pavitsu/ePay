@@ -79,11 +79,21 @@ if (isset($_POST['submitSignupCustomer'])) {
 
           //Insert the customer into the database
           $sql = "INSERT INTO customer (Firstname, Lastname, Username, Gender, Birthday, Address1, Address2, Zip, Phone, Email, Password)
-                  VALUES ('$first', '$last', '$usern', '$gender', '$birthday', '$addr1', '$addr2', '$zip', '$phoneVerified', '$email', '$hashedPwd');";
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL error";
+          }
+          else {
+            //Bind parameters to the place holder
+            mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $gender, $birthday, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
+            //Run parameters inside database
+            mysqli_stmt_execute($stmt);
 
-          mysqli_query($conn, $sql);
-          header("Location: ../signup.php?signup=success");
-          exit();
+            header("Location: ../signup.php?signup=success");
+            exit();
+          }
+
         }
       }
     }
@@ -160,11 +170,20 @@ elseif (isset($_POST['submitSignupSupplier'])) {
 
           // Insert the supplier into the database
           $sql = "INSERT INTO supplier (Firstname, Lastname, Username, Company, Address1, Address2, Zip, Phone, Email, Password)
-                  VALUES ('$first', '$last', '$usern', '$comp', '$addr1', '$addr2', '$zip', '$phone', '$email', '$hashedPwd');";
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $stmt = mysqli_stmt_init($conn);
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            echo "SQL error";
+          }
+          else {
+            //Bind parameters to the place holder
+            mysqli_stmt_bind_param($stmt, "ssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
+            //Run parameters inside database
+            mysqli_stmt_execute($stmt);
 
-          mysqli_query($conn, $sql);
-          header("Location: ../signup.php?signup=success");
-          exit();
+            header("Location: ../signup.php?signup=success");
+            exit();
+          }
         }
       }
     }

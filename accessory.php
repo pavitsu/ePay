@@ -13,7 +13,7 @@
 
     $type = 'AC';
 
-    $sql = "SELECT * FROM product WHERE Type = ?;";
+    $sql = "SELECT Image, Name, Price FROM product WHERE Type = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       echo "SQL statement failed";
@@ -26,7 +26,9 @@
       while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cardContainer" style="float: left;padding:20px;">';
         echo '<div class="card">';
-        printCard($row['Image'], $row['Name'], $row['Price']);
+        echo '<img src="img_uploads/'.$row['Image'].'" alt="Product" style="width:200px;height:150px;">';
+        echo '<h1>'.$row['Name'].'</h1>';
+        echo '<p class="title">'.$row['Price'].'</p>';
         echo '<p><button>Add to Cart</button></p>';
         echo '</div>';
         echo '</div>';

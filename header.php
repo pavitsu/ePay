@@ -1,7 +1,7 @@
 <?php
   session_start();
   include_once('includes/dbh.inc.php');
-  include_once('functions.php');
+  include_once('includes/functions.inc.php');
 ?>
 
 <!DOCTYPE html>

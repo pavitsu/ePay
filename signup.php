@@ -34,8 +34,8 @@
                 <input type="text" name="birth" placeholder="Birthday">
                 <input type="text" name="addr1" placeholder="Address1">
                 <input type="text" name="addr2" placeholder="Address2 (Optional)">
-                <input type="number" name="zip" placeholder="Zip">
-                <input type="number" name="phone" placeholder="Phone">
+                <input type="text" name="zip" placeholder="Zip">
+                <input type="text" name="phone" placeholder="Phone">
                 <input type="text" name="email" placeholder="Email">
                 <input type="password" name="passwd" placeholder="Password">
                 <div class="clearfix">
@@ -57,8 +57,8 @@
                 <input type="text" name="comp" placeholder="Company">
                 <input type="text" name="addr1" placeholder="Address1">
                 <input type="text" name="addr2" placeholder="Address2 (Optional)">
-                <input type="number" name="zip" placeholder="Zip">
-                <input type="number" name="phone" placeholder="Phone">
+                <input type="text" name="zip" placeholder="Zip">
+                <input type="text" name="phone" placeholder="Phone">
                 <input type="text" name="email" placeholder="Email">
                 <input type="password" name="passwd" placeholder="Password">
                 <div class="clearfix">

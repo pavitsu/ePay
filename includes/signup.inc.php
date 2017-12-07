@@ -5,29 +5,19 @@ include_once('functions.inc.php');
 
 if (isset($_POST['submitSignupCustomer'])) {
 
-  // Escape harmful SQL variables, preventing SQL injection
-  $first = mysqli_real_escape_string($conn, $_POST['first']);
-  $last = mysqli_real_escape_string($conn, $_POST['last']);
-  $usern = mysqli_real_escape_string($conn, $_POST['usern']);
-  $gender = mysqli_real_escape_string($conn, $_POST['radio']);
-  $birth = mysqli_real_escape_string($conn, $_POST['birth']);
-  $addr1 = mysqli_real_escape_string($conn, $_POST['addr1']);
-  $addr2 = mysqli_real_escape_string($conn, $_POST['addr2']);
-  $zip = mysqli_real_escape_string($conn, $_POST['zip']);
-  $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $passwd = mysqli_real_escape_string($conn, $_POST['passwd']);
-
-  // Remove all HTML tags and all characters with ASCII value > 127, from a string
-  $first = filter_var($first, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $last = filter_var($last, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $usern = filter_var($usern, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $addr1 = filter_var($addr1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $addr2 = filter_var($addr2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $zip = filter_var($zip, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $phone = filter_var($phone, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  // Remove all illegal characters from email
-  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  // Assign filtered string into variables
+  // Remove all HTML tags and all characters with ASCII value > 127, from a taken string
+  $first = filter_var($_POST['first'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $last = filter_var($_POST['last'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $usern = filter_var($_POST['usern'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $gender = $_POST['radio'];
+  $birth = filter_var($_POST['birth'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $addr1 = filter_var($_POST['addr1'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $addr2 = filter_var($_POST['addr2'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $zip = filter_var($_POST['zip'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+  $passwd = $_POST['passwd'];
 
   //Check for empty fields
   if (empty($first) || empty($last) || empty($usern) || empty($birth) ||
@@ -37,9 +27,13 @@ if (isset($_POST['submitSignupCustomer'])) {
   }
   else {
     //Check if input characters and sizes are valid
-    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || !preg_match("/^[a-zA-Z0-9]*$/", $usern) ||
-        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || !preg_match("/^[0-9]*$/", $zip) ||
-        !preg_match("/^[ 0-9]*$/", $phone) || strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2) {
+    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || 
+        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[- 0-9]*$/", $birth) || 
+        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
+        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) || 
+        strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 || 
+        substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 || 
+        substr_count($birth, "-") > 2) {
       header("Location: ../signup.php?signup=invalid");
       exit();
     }
@@ -61,13 +55,22 @@ if (isset($_POST['submitSignupCustomer'])) {
         else {
 
           // Re-format Birthdate into YYYY-MM-DD
-          $arraydate = explode(" ", $birth);
-          $date = array_map('intval', $arraydate);
-          $birthday = $date[2].'-'.$date[1].'-'.$date[0];
+          if (strpos($birth, " ") !== false) {
+            $arraydate = explode(" ", $birth);
+            $date = array_map('intval', $arraydate);
+            $birthVerified = $date[2].'-'.$date[1].'-'.$date[0];
+          }
+          else {
+            $birthVerified = $birth;
+          }
 
           // Re-format phone, removing any char except number
           if (strpos($phone, " ") !== false) { // '!== false' is to guarantee the condition will work for strpos in this case
             $phn = explode(" ", $phone);
+            $phoneVerified = $phn[0].$phn[1].$phn[2];
+          }
+          elseif (strpos($phone, "-") !== false) {
+            $phn = explode("-", $phone);
             $phoneVerified = $phn[0].$phn[1].$phn[2];
           }
           else {
@@ -86,7 +89,7 @@ if (isset($_POST['submitSignupCustomer'])) {
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $gender, $birthday, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
@@ -101,29 +104,19 @@ if (isset($_POST['submitSignupCustomer'])) {
 }
 elseif (isset($_POST['submitSignupSupplier'])) {
 
-  // Escape harmful SQL variables, preventing SQL injection
-  $first = mysqli_real_escape_string($conn, $_POST['first']);
-  $last = mysqli_real_escape_string($conn, $_POST['last']);
-  $usern = mysqli_real_escape_string($conn, $_POST['usern']);
-  $comp = mysqli_real_escape_string($conn, $_POST['comp']);
-  $addr1 = mysqli_real_escape_string($conn, $_POST['addr1']);
-  $addr2 = mysqli_real_escape_string($conn, $_POST['addr2']);
-  $zip = mysqli_real_escape_string($conn, $_POST['zip']);
-  $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-  $email = mysqli_real_escape_string($conn, $_POST['email']);
-  $passwd = mysqli_real_escape_string($conn, $_POST['passwd']);
-
+  // Assign filtered string into variables
   // Remove all HTML tags and all characters with ASCII value > 127, from a string
-  $first = filter_var($first, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $last = filter_var($last, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $usern = filter_var($usern, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $comp = filter_var($comp, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $addr1 = filter_var($addr1, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $addr2 = filter_var($addr2, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $zip = filter_var($zip, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $phone = filter_var($phone, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $first = filter_var($_POST['first'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $last = filter_var($_POST['last'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $usern = filter_var($_POST['usern'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $comp = filter_var($_POST['comp'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $addr1 = filter_var($_POST['addr1'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $addr2 = filter_var($_POST['addr2'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $zip = filter_var($_POST['zip'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   // Remove all illegal characters from email
-  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+  $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+  $passwd = $_POST['passwd'];
 
   //Check for empty fields
   if (empty($first) || empty($last) || empty($usern) || empty($comp) || empty($addr1) || 
@@ -133,9 +126,12 @@ elseif (isset($_POST['submitSignupSupplier'])) {
   }
   else {
     //Check if input char are valid
-    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || !preg_match("/^[a-zA-Z0-9]*$/", $usern) ||
-        !preg_match("/^[ a-zA-Z0-9]*$/", $comp) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
-        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[ 0-9]*$/", $phone) || strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2) {
+    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || 
+        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[ a-zA-Z0-9]*$/", $comp) || 
+        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
+        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) || 
+        strlen($zip) > 6 || strlen($phone) > 12 || 
+        substr_count($phone, " ") > 2 || substr_count($phone, "-") > 2) {
       header("Location: ../signup.php?signup=invalid");
       exit();
     }
@@ -159,6 +155,10 @@ elseif (isset($_POST['submitSignupSupplier'])) {
           // Re-format phone, removing any char except number
           if (strpos($phone, " ") !== false) { // '!== false' is to guarantee the condition will work for strpos in this case
             $phn = explode(" ", $phone);
+            $phoneVerified = $phn[0].$phn[1].$phn[2];
+          }
+          elseif (strpos($phone, "-") !== false) {
+            $phn = explode("-", $phone);
             $phoneVerified = $phn[0].$phn[1].$phn[2];
           }
           else {

@@ -1,25 +1,52 @@
 <?php
   include_once('header.php');
   include_once('sidebarTop.php');
-  include_once('functions.php');
 ?>
 
 <section class="pageContainer">
   <div class="pageWrapper" style="overflow:scroll;">
-    <h2>Accessory</h2>
+    
+
+
 
   <?php
     include_once('includes/dbh.inc.php');
 
-    $type = 'AC';
-
+    if (isset($_GET['menu'])) {
+    	$menu = $_GET['menu'];
+    	switch ($menu) {
+    	case 'CO':
+    		echo '<h2>Computer & Laptop</h2>';
+    		break;
+    	case 'ST':
+    		echo '<h2>Storage</h2>';
+    		break;
+    	case 'DS':
+    		echo '<h2>Display</h2>';
+    		break;
+    	case 'AU':
+    		echo '<h2>Audio</h2>';
+    		break;
+    	case 'AC':
+    		echo '<h2>Accessory</h2>';
+    		break;
+    	
+    	default:
+    		echo "No value";
+    		break;
+    	}
+    }
+    else {
+    	echo "NO VALUE";
+    }
+    
     $sql = "SELECT Image, Name, Price FROM product WHERE Type = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       echo "SQL statement failed";
     }
     else {
-      mysqli_stmt_bind_param($stmt, "s", $type);
+      mysqli_stmt_bind_param($stmt, "s", $menu);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
 

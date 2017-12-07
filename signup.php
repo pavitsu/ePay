@@ -158,6 +158,7 @@
   /* The Close Button (x) */
   .close {
       position: absolute;
+      padding-top: 60px;
       right: 35px;
       top: 15px;
       color: #000;

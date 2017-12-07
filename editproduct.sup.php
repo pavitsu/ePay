@@ -61,10 +61,6 @@
   $(".use-address").click(function() {
     var $row = $(this).closest("tr");    // Find the row
     var $text = $row.find(".nr").text(); // Find the text
-
-
-
-
   });
 </script>
 

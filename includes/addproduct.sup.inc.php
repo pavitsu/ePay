@@ -6,13 +6,13 @@ include_once('functions.inc.php');
 if (isset($_POST['submitAddProduct'])) {
 
   $image = getImage($_FILES['img_file']);
-  $name = mysqli_real_escape_string($conn, $_POST['name']);
-  $desc = mysqli_real_escape_string($conn, $_POST['description']);
-  $type = mysqli_real_escape_string($conn, $_POST['category']);
-  $price = mysqli_real_escape_string($conn, $_POST['price']);
-  $quan = mysqli_real_escape_string($conn, $_POST['quantity']);
-  $disc = mysqli_real_escape_string($conn, $_POST['discount']);
-  $refund = mysqli_real_escape_string($conn, $_POST['radio']);
+  $name = $_POST['name'];
+  $desc = $_POST['description'];
+  $type = $_POST['category'];
+  $price = $_POST['price'];
+  $quan = $_POST['quantity'];
+  $disc = $_POST['discount'];
+  $refund = $_POST['radio'];
 
   //Check for empty fields
   if (empty($image) || empty($name) || empty($desc) || 

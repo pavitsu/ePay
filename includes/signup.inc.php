@@ -93,7 +93,7 @@ if (isset($_POST['submitSignupCustomer'])) {
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
-            header("Location: ../signup.php?signup=success");
+            header("Location: ../index.php?signup=success");
             exit();
           }
 
@@ -181,7 +181,7 @@ elseif (isset($_POST['submitSignupSupplier'])) {
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
-            header("Location: ../signup.php?signup=success");
+            header("Location: ../index.php?signup=success");
             exit();
           }
         }

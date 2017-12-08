@@ -32,7 +32,7 @@
     <h2>My Order List</h2>
     <div class="table-respondsive">
 
-      <table class="table-responsive">
+      <table class="table table-bordered">
         <tr>
           <th width="40%">Product Name</th>
           <th width="10%">Quantity</th>

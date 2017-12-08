@@ -19,8 +19,10 @@
         echo          '<h5 class="text-info">'.$row['Name'].'</h5>';
         echo          '<h5 class="text-danger">'.$row['Price'].' Bath</h5>';
         echo          '<input type="text" name="amount" class="form-control" value="1">';
+
         echo          '<input type="hidden" name="hidden_name" value="'.$row['Name'].'">';
         echo          '<input type="hidden" name="hidden_price" value="'.$row['Price'].'">';
+        
         echo          '<input type="submit" name="add" style="margin-top: 5px;" class="btn btn-default" value="Add to Cart">';
         echo        '</div>';
         echo     '</form>';

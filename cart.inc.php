@@ -47,7 +47,7 @@
 				if ($value['product_id'] == $_GET['id']) {
 					unset($_SESSION['cart'][$key]);
 					echo '<script>alert("Product is removed")</script>';
-					echo '<script>window.location="index.php"</script>';
+					echo '<script>window.location="cart.php"</script>';
 				}
 			}
 		}

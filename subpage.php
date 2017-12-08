@@ -6,9 +6,6 @@
 <section class="pageContainer">
   <div class="pageWrapper" style="overflow:scroll;">
     
-
-
-
   <?php
     include_once('includes/dbh.inc.php');
 

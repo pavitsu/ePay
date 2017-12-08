@@ -30,7 +30,7 @@
               echo    '<td>'.$value['item_amount'].'</td>';
               echo    '<td>'.$value['item_price'].'</td>';
               echo    '<td>'.number_format($value['item_amount'] * $value['item_price'], 2).'</td>';
-              echo    '<td><a href="shop.php?action=delete&id='.$value['product_id'].'"><span class="text-danger">X</span></td>';
+              echo    '<td><a href="cart.inc.php?action=delete&id='.$value['product_id'].'"><span class="text-danger">X</span></td>';
               echo '</tr>';
               $total = $total + ($value['item_amount'] * $value['item_price']);
             }

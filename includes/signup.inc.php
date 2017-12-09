@@ -82,15 +82,15 @@ if (isset($_POST['submitSignupCustomer'])) {
           $hashedPwd = password_hash($passwd, PASSWORD_DEFAULT);
 
           //Insert the customer into the database
-          $sql = "INSERT INTO customer (Firstname, Lastname, Username, Gender, Birthday, Address1, Address2, City, Zip, Phone, Email, Password)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $sql = "INSERT INTO customer (Firstname, Lastname, Username, Gender, Birthday, Address1, Address2, City, Zip, Phone, Email, Password, card)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             echo "SQL error";
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "ssssssssssss", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "ssssssssssssi", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd, 0);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 

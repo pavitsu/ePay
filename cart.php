@@ -45,10 +45,17 @@
       </table>
 
 
-      <form class="processCheckout" action="checkout.php" method="post">
+      <form class="processCheckout" action="payment.php" method="post">
       	<button type="submit" name="submitCheckout">Checkout</button>
       </form>
 
+      <?php 
+        print_r($_SESSION['cart']); 
+        $_SESSION['total'] = number_format($total, 2);
+      ?>
+
+  </div>
+</section>
 
 
 <style>

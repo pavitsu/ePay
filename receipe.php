@@ -103,7 +103,14 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
     		fclose($createReceipe);
     	?>
 
+        <div>
+            <?php
+                echo '<a class="pure-button pure-button-primary" href="'.$receipeName.'" download="Receipt.'.$cus_firstname.'.txt" style="position:fixed;top: 50%;left: 44%;"> Download Receipe</a>';
 
+                
+            ?>
+            
+        </div>
 
 
 

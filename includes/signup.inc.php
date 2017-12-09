@@ -10,10 +10,11 @@ if (isset($_POST['submitSignupCustomer'])) {
   $first = filter_var($_POST['first'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $last = filter_var($_POST['last'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $usern = filter_var($_POST['usern'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
-  $gender = $_POST['radio'];
+  $gender = $_POST['gender'];
   $birth = filter_var($_POST['birth'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $addr1 = filter_var($_POST['addr1'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $addr2 = filter_var($_POST['addr2'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $city = $_POST['city'];
   $zip = filter_var($_POST['zip'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -81,15 +82,15 @@ if (isset($_POST['submitSignupCustomer'])) {
           $hashedPwd = password_hash($passwd, PASSWORD_DEFAULT);
 
           //Insert the customer into the database
-          $sql = "INSERT INTO customer (Firstname, Lastname, Username, Gender, Birthday, Address1, Address2, Zip, Phone, Email, Password)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $sql = "INSERT INTO customer (Firstname, Lastname, Username, Gender, Birthday, Address1, Address2, City, Zip, Phone, Email, Password)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             echo "SQL error";
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "ssssssssssss", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
@@ -112,6 +113,7 @@ elseif (isset($_POST['submitSignupSupplier'])) {
   $comp = filter_var($_POST['comp'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $addr1 = filter_var($_POST['addr1'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $addr2 = filter_var($_POST['addr2'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+  $city = $_POST['city'];
   $zip = filter_var($_POST['zip'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   $phone = filter_var($_POST['phone'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
   // Remove all illegal characters from email
@@ -169,15 +171,15 @@ elseif (isset($_POST['submitSignupSupplier'])) {
           $hashedPwd = password_hash($passwd, PASSWORD_DEFAULT);
 
           // Insert the supplier into the database
-          $sql = "INSERT INTO supplier (Firstname, Lastname, Username, Company, Address1, Address2, Zip, Phone, Email, Password)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $sql = "INSERT INTO supplier (Firstname, Lastname, Username, Company, Address1, Address2, City, Zip, Phone, Email, Password)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             echo "SQL error";
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "ssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $zip, $phoneVerified, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 

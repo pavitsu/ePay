@@ -1,8 +1,8 @@
 
 
-    <form class="pure-form pure-form-stacked">
+    <form action="includes/signup.inc.php" class="pure-form pure-form-stacked" method="post">
           <fieldset>
-              <legend>Customer</legend>
+              <legend>Supplier</legend>
 
               <div class="pure-g">
                   <div class="pure-u-1 pure-u-md-1-3">
@@ -21,17 +21,8 @@
                   </div>
 
                   <div class="pure-u-1 pure-u-md-1-3">
-                      <label for="gender">Gender</label>
-                      <select name="gender" id="gender" class="pure-input-1-4">
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Other">Other</option>
-                      </select>
-                  </div>
-
-                  <div class="pure-u-1 pure-u-md-1-3">
-                      <label for="birth-day">Birthday</label>
-                      <input name="birth" id="birth-day" class="pure-input-1-4" type="text">
+                      <label for="company">Company</label>
+                      <input name="comp" id="company" class="pure-input-1-3" type="text">
                   </div>
 
                   <div class="pure-u-1 pure-u-md-1-3">
@@ -78,7 +69,7 @@
                   <input id="terms" type="checkbox"> I've read the terms and conditions
               </label>
 
-              <button name="submitSignupCustomer" type="submit" class="pure-button pure-button-primary">Sign Up</button>
+              <button name="submitSignupSupplier" type="submit" class="pure-button pure-button-primary">Sign Up</button>
           </fieldset>
       </form>
 

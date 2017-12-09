@@ -1,0 +1,32 @@
+2017-12-09
+06:42:06pm
+
+
+Name: Neil Bloomkamp
+Shipping Address: Cape Town
+                  South Africa
+                  
+                  39393
+
+
+Product Name:   iMac
+Product Amount: 1
+Product Price:  55000
+Total Price:    55,000.00
+Refund:         refundNo
+
+Product Name:   WD
+Product Amount: 1
+Product Price:  2200
+Total Price:    2,200.00
+Refund:         refundYes
+
+Product Name:   LG Ultrafine
+Product Amount: 4
+Product Price:  46000
+Total Price:    184,000.00
+Refund:         refundNo
+
+
+
+Total Price:   241,200.00

@@ -23,26 +23,82 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
     	<h2>Receipe</h2>
 
     	<?php
-    		$createReceipe = fopen("receipe/receipe.txt", "w") or die("Unable to open or create file!");
+
+            $cid = $_SESSION['c_id'];
+
+            $sql = "SELECT Firstname, Lastname, Address1, Address2, City, Zip FROM customer WHERE Customer_ID = ?;";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                echo "SQL statement failed";
+            }
+            else {
+                mysqli_stmt_bind_param($stmt, "i", $cid);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $row = mysqli_fetch_assoc($result);
+
+                $cus_firstname = $row['Firstname'];
+                $cus_lastname = $row['Lastname'];
+                $cus_address1 = $row['Address1'];
+                $cus_address2 = $row['Address2'];
+                $cus_city = $row['City'];
+                $cus_zip = $row['Zip'];
+            }
+
+            $receipeName = 'receipe/'.uniqid().'.'.$cid.'.txt';
+    		$createReceipe = fopen($receipeName, "w") or die("Unable to open or create file!");
             $date = date("Y-m-d");
             $time = date("h:i:sa");
 
+            // Write date and time
+            fwrite($createReceipe, $date."\n");
+            fwrite($createReceipe, $time."\n");
+
+            fwrite($createReceipe, "\n\n");
+
+            // Write customer detail
+            fwrite($createReceipe, 'Name: '.$cus_firstname." ".$cus_lastname."\n");
+            fwrite($createReceipe, 'Shipping Address: '.$cus_address1."\n");
+            fwrite($createReceipe, '                  '.$cus_address2."\n");
+            fwrite($createReceipe, '                  '.$cus_city."\n");
+            fwrite($createReceipe, '                  '.$cus_zip."\n");
+
+            fwrite($createReceipe, "\n\n");
+
+
+            // Write purchased detail
     		foreach ($_SESSION['cart'] as $key => $value) {
     			$name = $value['item_name'];
     			$amount = $value['item_amount'];
     			$price = $value['item_price'];
     			$subtotal = number_format($value['item_amount'] * $value['item_price'], 2);
 
-    			fwrite($createReceipe, $name."\n");
-    			fwrite($createReceipe, $amount."\n");
-    			fwrite($createReceipe, $price."\n");
-    			fwrite($createReceipe, $subtotal."\n");
+                $sql = "SELECT RefundAvailable FROM product WHERE Product_ID = ?;";
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    echo "SQL statement failed";
+                }
+                else {
+                    mysqli_stmt_bind_param($stmt, "i", $value['product_id']);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    $row = mysqli_fetch_assoc($result);
+
+                    
+                }
+
+    			fwrite($createReceipe, 'Product Name:   '.$name."\n");
+    			fwrite($createReceipe, 'Product Amount: '.$amount."\n");
+    			fwrite($createReceipe, 'Product Price:  '.$price."\n");
+    			fwrite($createReceipe, 'Total Price:    '.$subtotal."\n");
+                fwrite($createReceipe, 'Refund:         '.$row['RefundAvailable']."\n");
+                fwrite($createReceipe, "\n");
 
     		}
-    		$total = number_format($_SESSION['total'], 2);
-    		fwrite($createReceipe, $total."\n");
-            fwrite($createReceipe, $date."\n");
-            fwrite($createReceipe, $time."\n");
+    		$total = $_SESSION['total'];
+            fwrite($createReceipe, "\n\n");
+    		fwrite($createReceipe, 'Total Price:   '.$total."\n");
+            
 
     		fclose($createReceipe);
     	?>

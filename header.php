@@ -29,7 +29,7 @@
                   Cart
                 </a>';
         } else {
-          echo '<a href="cart.php" class="pure-button" onclick="myFunction()" style="float:right;margin-right:40px;margin-top:12.5px;">
+          echo '<a href="signup.php" class="pure-button" onclick="link_to_signup()" style="float:right;margin-right:40px;margin-top:12.5px;">
                   <i class="fa fa-shopping-cart fa-lg"  ></i>
                   Cart
                 </a>';
@@ -72,7 +72,7 @@
 
 
 <script>
-  function myFunction() {
-      alert("Please, Sign up or Log-in before you continue.");
+  function link_to_signup() {
+      alert("Please Sign up or Log-in before you continue.");
   }
 </script>

@@ -45,7 +45,7 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
                 $cus_zip = $row['Zip'];
             }
 
-            $receipeName = 'receipe/'.uniqid().'.'.$cid.'.txt';
+            $receipeName = 'receipe/'.uniqid($cid.'_', true).'.txt';
     		$createReceipe = fopen($receipeName, "w") or die("Unable to open or create file!");
             $date = date("Y-m-d");
             $time = date("h:i:sa");
@@ -94,22 +94,26 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
                 fwrite($createReceipe, 'Refund:         '.$row['RefundAvailable']."\n");
                 fwrite($createReceipe, "\n");
 
+                unset($_SESSION['cart'][$key]);
+
     		}
     		$total = $_SESSION['total'];
             fwrite($createReceipe, "\n\n");
     		fwrite($createReceipe, 'Total Price:   '.$total."\n");
-            
 
     		fclose($createReceipe);
+            unset($_SESSION['total']);
     	?>
+
+        <?php
+            $files = glob($receipeName);
+            print_r($files);
+        ?>
 
         <div>
             <?php
                 echo '<a class="pure-button pure-button-primary" href="'.$receipeName.'" download="Receipt.'.$cus_firstname.'.txt" style="position:fixed;top: 50%;left: 44%;"> Download Receipe</a>';
-
-                
             ?>
-            
         </div>
 
 

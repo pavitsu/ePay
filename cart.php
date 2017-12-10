@@ -44,19 +44,29 @@
 
       </table>
 
-
-      <form class="processCheckout" action="payment.php" method="post">
-      	<button type="submit" name="submitCheckout">Checkout</button>
-      </form>
-
       <?php 
-        print_r($_SESSION['cart']); 
-        $_SESSION['total'] = number_format($total, 2);
+
+
+        
+
+        try {
+          checkCart($_SESSION['cart']);  
+        }
+
+        catch(Exception $e) {
+          $encode = json_encode($_SESSION['cart']);
+          print_r($encode);
+          $_SESSION['total'] = number_format($total, 2);
+          echo $e->getMessage();
+        }
+
+
+
+        
       ?>
 
   </div>
 </section>
-
 
 <style>
 	.processCheckout button {

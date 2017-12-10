@@ -1,0 +1,26 @@
+2017-12-10
+09:33:23am
+
+
+Name: Neil Degrass
+Shipping Address: akakak
+                  akakak
+                  
+                  121212
+
+
+Product Name:   WD
+Product Amount: 8
+Product Price:  2200
+Total Price:    17,600.00
+Refund:         refundYes
+
+Product Name:   LG Ultrafine
+Product Amount: 1
+Product Price:  46000
+Total Price:    46,000.00
+Refund:         refundNo
+
+
+
+Total Price:   63,600.00

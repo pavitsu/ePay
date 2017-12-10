@@ -45,24 +45,17 @@
       </table>
 
       <?php 
-
-
-        
-
+        // Try if cart is empty
+        // If cart is empty, checkout button will not appear
         try {
           checkCart($_SESSION['cart']);  
         }
-
         catch(Exception $e) {
           $encode = json_encode($_SESSION['cart']);
           print_r($encode);
           $_SESSION['total'] = number_format($total, 2);
           echo $e->getMessage();
         }
-
-
-
-        
       ?>
 
   </div>

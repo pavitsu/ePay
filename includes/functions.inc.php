@@ -20,7 +20,7 @@ function getImage($img_file) {
 		if ($img_fileError === 0) {
 			if ($img_fileSize < 50000000) {
 
-				$fileNameNew = uniqid('', true).".".$fileActualExt; //unique image
+				$fileNameNew = uniqid('', true).".".$fileActualExt; //unique image name
 		        $fileDestination = '../img_uploads/' .$fileNameNew;
 		        //Add image
 		        move_uploaded_file($img_fileTmpName, $fileDestination);

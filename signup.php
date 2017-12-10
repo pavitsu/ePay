@@ -8,9 +8,9 @@
 
       <div class="pure-menu pure-menu-horizontal" style="text-align: center;font-size: 28px;">
         <!--<a href="#" class="pure-menu-heading pure-menu-link"></a>-->
-        <ul id="link" class="pure-menu-list">
-            <button class="pure-button" style="width: 180px;height: 60px;" id="cus">Customer</button>
-            <button class="pure-button" style="width: 180px;height: 60px;" id="sup">Supplier</button>
+        <ul id="link" style="padding-top: 20px;">
+            <button class="pure-button pure-button-primary" id="cus" style="background:#007acc;font-size:22px;">Customer</button>
+            <button class="pure-button pure-button-primary" id="sup" style="background:#ff6600;font-size:22px;">Supplier</button>
         </ul>
       </div>
         

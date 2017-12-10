@@ -75,10 +75,10 @@
 -->
 
 <form class="pure-form pure-form-aligned" action="includes/signup.inc.php" method="post">
-  <legend style="font-size:28px;padding-top:40px;padding-left:150px;">
+  <legend style="font-size:28px;padding-top:25px;padding-left:150px;">
     <strong>Supplier</strong>
   </legend>
-  <div style="float:left;padding-left:80px;padding-top: 50px;">
+  <div style="float:left;padding-left:80px;padding-top: 25px;">
     <fieldset>
         <div class="pure-control-group">
             <label for="first">First Name</label>
@@ -108,7 +108,7 @@
     </fieldset>
   </div>
 
-  <div style="float:left;padding-left:80px;padding-top: 50px;">
+  <div style="float:left;padding-left:80px;padding-top: 25px;">
     <fieldset>
         <div class="pure-control-group">
             <label for="addr1">Address</label>

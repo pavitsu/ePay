@@ -90,7 +90,8 @@ if (isset($_POST['submitSignupCustomer'])) {
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "ssssssssssssi", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd, 0);
+            $zero = 0;
+            mysqli_stmt_bind_param($stmt, "ssssssssssssi", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd, $zero);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 

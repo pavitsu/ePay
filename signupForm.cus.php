@@ -1,5 +1,5 @@
-
-
+<!---->
+<!--
     <form action="includes/signup.inc.php" class="pure-form pure-form-stacked" method="post">
           <fieldset>
               <legend>Customer</legend>
@@ -81,4 +81,185 @@
               <button name="submitSignupCustomer" type="submit" class="pure-button pure-button-primary">Sign Up</button>
           </fieldset>
       </form>
+-->
 
+<!--
+<form class="pure-form pure-form-stacked">
+  <legend>Customer</legend>
+      <div style="float:left">
+        <fieldset>
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="first-name">First Name</label>
+                <input name="first" id="first-name" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="last-name">Last Name</label>
+                <input name="last" id="last-name" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="last-name">User Name</label>
+                <input name="usern" id="last-name" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" class="pure-input-1-3">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="birthday">Birthday</label>
+                <input name="birth" id="birthday" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="email">E-Mail</label>
+                <input name="email" id="email" class="pure-input-1-3" type="email">
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div style="float:left">
+        <fieldset>
+          <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="address1">Address</label>
+                <input name="addr1" id="address1" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="address2">Address</label>
+                <input name="addr2" id="address2" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="city">City</label>
+                <select name="city" id="city" class="pure-input-1-3">
+                    <option value="BKK">Bangkok</option>
+                    <option value="CNX">Chiang Mai</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="zip">Zip</label>
+                <input name="zip" id="zip" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="phone">Phone</label>
+                <input name="phone" id="phone" class="pure-input-1-3" type="text">
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="passwd">Password</label>
+                <input name="passwd" id="passwd" class="pure-input-1-3" type="password">
+            </div>
+            </div>
+
+            <label for="terms" class="pure-checkbox">
+                <input name="term" id="terms" type="checkbox"> 
+                <a href="termandcondition.html">I've read the terms and conditions</a>
+            </label>
+
+            <button name="submitSignupCustomer" type="submit" class="pure-button pure-button-primary">Sign Up</button>
+          </div>
+        </fieldset>
+      </div>
+</form>
+-->
+
+
+<form class="pure-form pure-form-aligned" action="includes/signup.inc.php" method="post">
+  <legend style="font-size:28px;padding-top:40px;padding-left:150px;">
+    <strong>Customer</strong>
+  </legend>
+  <div style="float:left;padding-left:80px;padding-top: 50px;">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="first">First Name</label>
+            <input name="first" id="first" type="text" placeholder="First Name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="last">Last Name</label>
+            <input name="last" id="last" type="text" placeholder="Last Name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="user">User Name</label>
+            <input name="usern" id="user" type="text" placeholder="User Name">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="gender">Gender</label>
+              <select name="gender" id="gender" class="pure-input-1-3">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="birth">Birthday</label>
+            <input name="birth" id="birth" type="text" placeholder="DD MM YYYY">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email</label>
+            <input name="email" id="email" type="email" placeholder="epay@example.com">
+        </div>
+
+    </fieldset>
+  </div>
+
+  <div style="float:left;padding-left:80px;padding-top: 50px;">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="addr1">Address</label>
+            <input name="addr1" id="addr1" type="text" placeholder="Address">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="addr2">Address</label>
+            <input name="addr2" id="addr2" type="text" placeholder="Address (Optional)">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="city">City</label>
+              <select name="city" id="city" class="pure-input-1-3">
+                <option value="BKK">Bangkok</option>
+                <option value="CNX">Chiang Mai</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+        <div class="pure-control-group">
+            <label for="zip">Zip</label>
+            <input name="zip" id="zip" type="text" placeholder="Zip">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="phone">Phone</label>
+            <input name="phone" id="phone" type="text" placeholder="000 000 0000">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="passwd">Password</label>
+            <input name="passwd" id="passwd" type="password" placeholder="Make it difficult, yet recallable">
+        </div>
+    </fieldset>
+  </div>
+
+  <div class="pure-controls" style="margin: 30% 40%;">
+      <button name="submitSignupCustomer" type="submit" class="pure-button pure-button-primary">Sign Up</button>
+  </div>
+    
+</form>

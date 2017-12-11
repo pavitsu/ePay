@@ -48,7 +48,8 @@
         // Try if cart is empty
         // If cart is empty, checkout button will not appear
         try {
-          checkCart($_SESSION['cart']);  
+          $checkCa = new check();
+          $checkCa->checkCart($_SESSION['cart']);  
         }
         catch(Exception $e) {
           $encode = json_encode($_SESSION['cart']);

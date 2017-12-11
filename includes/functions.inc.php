@@ -34,7 +34,8 @@ function getImage($img_file) {
 	else { echo "File type is invalid."; }
 }
 
-function checkCart($value) {
+class check {
+	function checkCart($value) {
     if (!empty($value)) {
         throw new Exception('<form class="processCheckout" action="payment.php" method="post">
                                 <button type="submit" name="submitCheckout">Checkout</button>
@@ -66,5 +67,8 @@ function checkSource($value) {
     		break;
     	}
 }
+}
+
+
 
 

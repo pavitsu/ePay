@@ -6,10 +6,7 @@
 <?php
 	if (isset($_POST['add'])) {
 
-		
-			$menu = $_GET['menu'];
-		
-
+		$menu = $_GET['menu'];
 
 		// Cart has at least one product
 		if (isset($_SESSION['cart'])) {
@@ -30,13 +27,16 @@
 
 				$_SESSION['cart'][$count] = $item_array;
 				//echo '<script>window.location="index.php"</script>';
-				checkSource($menu);
+				$checkSou = new check();
+				$checkSou->checkSource($menu);
 			}
 			// Not allow duplicate product
 			else {
 				echo '<script>alert("Product is added")</script>';
 				//echo '<script>window.location="index.php"</script>';
-				checkSource($menu);
+				$checkSou = new check();
+				$checkSou->checkSource($menu);
+				
 			}
 		}
 		// First product is added into cart
@@ -50,7 +50,8 @@
 
 			$_SESSION['cart'][0] = $item_array;
 			//echo '<script>window.location="index.php"</script>';
-			checkSource($menu);
+			$checkSou = new check();
+			$checkSou->checkSource($menu);
 		}
 	}
 

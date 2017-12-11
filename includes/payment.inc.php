@@ -47,7 +47,7 @@ if (isset($_POST['submitPayment'])) {
 	   //Run parameters inside database
 	   mysqli_stmt_execute($stmt);
 
-	   header("Location: ../receipe.php?payment=success");
+	   header("Location: transaction.inc.php");
 	   exit();
 	}
 

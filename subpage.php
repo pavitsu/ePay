@@ -52,7 +52,7 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
           echo '<div class="col-md-3">';
-          echo    '<form method="post" action="cart.inc.php?action=add&id='.$row['Product_ID'].'" >';
+          echo    '<form method="post" action="cart.inc.php?action=add&id='.$row['Product_ID'].'&menu='.$menu.'" >';
           echo        '<div style="border: 1px solid #eaeaec; margin: -1px 19px 3px -1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); padding: 10px; align="center">';
           echo          '<img src="img_uploads/'.$row['Image'].'" alt="Product" style="width:180px;height:130px; class="img-responsive">';
           echo          '<h5 class="text-info">'.$row['Name'].'</h5>';

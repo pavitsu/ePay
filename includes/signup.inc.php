@@ -20,9 +20,16 @@ if (isset($_POST['submitSignupCustomer'])) {
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   $passwd = $_POST['passwd'];
 
+  $errorEmpty = false;
+  $errorInvalid = false;
+  $errorEmail = false;
+  $errorUsername = false;
+
   //Check for empty fields
   if (empty($first) || empty($last) || empty($usern) || empty($birth) ||
       empty($addr1) || empty($zip) || empty($phone) || empty($email) || empty($passwd)) {
+    echo '<span class="form-error">Fill in all fields!<span>';
+    $errorEmpty = true;
     header("Location: ../signup.php?signup=empty");
     exit();
   }
@@ -35,12 +42,16 @@ if (isset($_POST['submitSignupCustomer'])) {
         strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 || 
         substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 || 
         substr_count($birth, "-") > 2) {
+      echo '<span class="form-error">Check your input format<span>';
+      $errorInvalid = true;
       header("Location: ../signup.php?signup=invalid");
       exit();
     }
     else {
       //Check for valid email
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errorEmail = true;
+        echo '<span class="form-error">Write a valid e-mail<span>';
         header("Location: ../signup.php?signup=email");
         exit();
       }
@@ -50,6 +61,8 @@ if (isset($_POST['submitSignupCustomer'])) {
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
+          echo '<span class="form-error">Username is taken<span>';
+          $errorUsername = true;
           header("Location: ../signup.php?signup=usertaken");
           exit();
         }
@@ -95,6 +108,7 @@ if (isset($_POST['submitSignupCustomer'])) {
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
+            //echo '<span class="form-success">Signup successful<span>';
             header("Location: ../index.php?signup=success");
             exit();
           }
@@ -196,3 +210,47 @@ else {
   header("Location: ../signup.php");
   exit();
 }
+
+
+?>
+
+<style>
+  .form-error {
+    color: red;
+  }
+  .form-success {
+    color: green;
+  }
+  .input-error {
+    box-shadow: 0 0 5px red;
+  }
+</style>
+
+<script>
+  $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-gender", "#cus-birth", "#addr1", "#addr2", "#cus-city", "#cus-zip", "#cus-phone", "#cus-passwd").removeClass("input-error");
+
+  var errorEmpty = "<?php echo $errorEmpty; ?>";
+  var errorInvalid = "<?php echo $errorInvalid; ?>";
+  var errorEmail = "<?php echo $errorEmail; ?>";
+  var errorUsername = "<?php echo $errorUsername; ?>";
+
+  if (errorEmpty == true) {
+    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").addClass("input-error");
+  }
+  if (errorInvalid == true) {
+    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").addClass("input-error");
+  }
+  if(errorEmail == true) {
+    $("#cus-email").addClass("input-error");
+  }
+  if(errorUsername == true) {
+    $("#cus-user").addClass("input-error");
+  }
+
+  /*
+  if (errorEmpty == false && errorInvalid == false && errorEmail == false && errorUsername == false) {
+    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").val("");
+  } */
+</script>
+
+

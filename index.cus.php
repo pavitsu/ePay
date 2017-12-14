@@ -40,7 +40,7 @@
 <script>
   $(document).ready(function() {
     $("#cus").click(function() {
-      $("#form").load("signupForm.cus.php");
+      $("#form").load("cart.inc.php");
     });
   });
 </script>

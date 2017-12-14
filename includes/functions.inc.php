@@ -36,37 +36,42 @@ function getImage($img_file) {
 
 class check {
 	function checkCart($value) {
-    if (!empty($value)) {
-        throw new Exception('<form class="processCheckout" action="payment.php" method="post">
-                                <button type="submit" name="submitCheckout">Checkout</button>
-                            </form>');
-    }
-    return true;
-}
-
-function checkSource($value) {
-	switch ($value) {
-    	case 'CO':
-    		echo '<script>window.location="subpage.php?menu=CO"</script>';
-    		break;
-    	case 'ST':
-    		echo '<script>window.location="subpage.php?menu=ST"</script>';
-    		break;
-    	case 'DS':
-    		echo '<script>window.location="subpage.php?menu=DS"</script>';
-    		break;
-    	case 'AU':
-    		echo '<script>window.location="subpage.php?menu=AU"</script>';
-    		break;
-    	case 'AC':
-    		echo '<script>window.location="subpage.php?menu=AC"</script>';
-    		break;
-    	
-    	default:
-    		echo '<script>window.location="index.php"</script>';
-    		break;
-    	}
-}
+	    if (!empty($value)) {
+	        throw new Exception('<form class="processCheckout" action="payment.php" method="post">
+	                                <button type="submit" name="submitCheckout">Checkout</button>
+	                            </form>');
+	    }
+	    return true;
+	}
+	function checkSource($value) {
+		switch ($value) {
+	    	case 'CO':
+	    		echo '<script>window.location="subpage.php?menu=CO"</script>';
+	    		break;
+	    	case 'ST':
+	    		echo '<script>window.location="subpage.php?menu=ST"</script>';
+	    		break;
+	    	case 'DS':
+	    		echo '<script>window.location="subpage.php?menu=DS"</script>';
+	    		break;
+	    	case 'AU':
+	    		echo '<script>window.location="subpage.php?menu=AU"</script>';
+	    		break;
+	    	case 'AC':
+	    		echo '<script>window.location="subpage.php?menu=AC"</script>';
+	    		break;
+	    	
+	    	default:
+	    		echo '<script>window.location="index.php"</script>';
+	    		break;
+	    	}
+	}
+	function checkProductQuantity($need, $left) {
+		if (($left - $need) < 0) {
+			throw new Exception("<script> alert('bla') </script>");
+		}
+		return true;
+	}
 }
 
 

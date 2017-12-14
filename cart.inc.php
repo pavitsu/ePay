@@ -11,33 +11,49 @@
 		// Cart has at least one product
 		if (isset($_SESSION['cart'])) {
 
-			$item_array_id = array_column($_SESSION['cart'], "product_id");
+			try {
+				$checkUnit = new check();
+				$pid = $_GET['id'];
+				$sql = "SELECT Quantity FROM product WHERE Product_ID = '$pid';";
+        		$result = mysqli_query($conn, $sql);
+        		$rowQuantity = mysqli_fetch_assoc($result);
+				$checkUnit->checkProductQuantity($_POST['amount'], $rowQuantity['Quantity']);
 
-			// New product is added
-			if (!in_array($_GET['id'], $item_array_id)) {
+				$item_array_id = array_column($_SESSION['cart'], "product_id");
 
-				$count = count($_SESSION['cart']);
+				// New product is added
+				if (!in_array($_GET['id'], $item_array_id)) {
 
-				$item_array = array(
-					'product_id' => $_GET['id'],
-					'item_name' => $_POST['hidden_name'],
-					'item_price' => $_POST['hidden_price'],
-					'item_amount' => $_POST['amount']
-				);
+					$count = count($_SESSION['cart']);
 
-				$_SESSION['cart'][$count] = $item_array;
-				//echo '<script>window.location="index.php"</script>';
+					$item_array = array(
+						'product_id' => $_GET['id'],
+						'item_name' => $_POST['hidden_name'],
+						'item_price' => $_POST['hidden_price'],
+						'item_amount' => $_POST['amount']
+					);
+
+					$_SESSION['cart'][$count] = $item_array;
+					//echo '<script>window.location="index.php"</script>';
+					$checkSou = new check();
+					$checkSou->checkSource($menu);
+				}
+				// Not allow duplicate product
+				else {
+					echo '<script>alert("Product is added")</script>';
+					//echo '<script>window.location="index.php"</script>';
+					$checkSou = new check();
+					$checkSou->checkSource($menu);
+					
+				}
+			}
+			catch(Exception $e) {
 				$checkSou = new check();
 				$checkSou->checkSource($menu);
+				echo $e->getMessage();
 			}
-			// Not allow duplicate product
-			else {
-				echo '<script>alert("Product is added")</script>';
-				//echo '<script>window.location="index.php"</script>';
-				$checkSou = new check();
-				$checkSou->checkSource($menu);
-				
-			}
+
+			
 		}
 		// First product is added into cart
 		else {

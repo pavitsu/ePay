@@ -35,15 +35,10 @@
     echo '<div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Popular Product</a>
-            <hr>
             <a href="subpage.php?menu=CO">Computer & Laptop</a>
-            <hr>
             <a href="subpage.php?menu=ST">Storage</a>
-            <hr>
             <a href="subpage.php?menu=DS">Display</a>
-            <hr>
             <a href="subpage.php?menu=AU">Audio</a>
-            <hr>
             <a href="subpage.php?menu=AC">Accessory</a>
             <hr>
             <a href="loginSup.php">Supplier Login</a>

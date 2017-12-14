@@ -4,10 +4,11 @@
 ?>
 
 <?php
-  if (isset($_SESSION['c_id'])) {
+
+  if (isset($_SESSION['c_uid'])) {
     include_once('index.cus.php');
   }
-  elseif (isset($_SESSION['s_id'])) {
+  elseif (isset($_SESSION['s_uid'])) {
     include_once('index.sup.php');
   }
   else {
@@ -60,5 +61,3 @@
     opacity: 0.7;
   }
 </style>
-
-

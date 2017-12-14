@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('dbh.inc.php');
 include_once('functions.inc.php');
 
@@ -28,12 +28,12 @@ if (isset($_POST['submitSignupCustomer'])) {
   }
   else {
     //Check if input characters and sizes are valid
-    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || 
-        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[- 0-9]*$/", $birth) || 
-        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
-        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) || 
-        strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 || 
-        substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 || 
+    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) ||
+        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[- 0-9]*$/", $birth) ||
+        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) ||
+        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) ||
+        strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 ||
+        substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 ||
         substr_count($birth, "-") > 2) {
       header("Location: ../signup.php?signup=invalid");
       exit();
@@ -86,7 +86,7 @@ if (isset($_POST['submitSignupCustomer'])) {
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "SQL error";
+            echo "/'Insert customer/' SQL error".$sql;
           }
           else {
             //Bind parameters to the place holder
@@ -94,6 +94,11 @@ if (isset($_POST['submitSignupCustomer'])) {
             mysqli_stmt_bind_param($stmt, "ssssssssssssi", $first, $last, $usern, $gender, $birthVerified, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd, $zero);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
+
+            $_SESSION['c_first'] = $first;
+            $_SESSION['c_last'] = $last;
+            $_SESSION['c_email'] = $email;
+            $_SESSION['c_uid'] = $usern;
 
             header("Location: ../index.php?signup=success");
             exit();
@@ -122,18 +127,18 @@ elseif (isset($_POST['submitSignupSupplier'])) {
   $passwd = $_POST['passwd'];
 
   //Check for empty fields
-  if (empty($first) || empty($last) || empty($usern) || empty($comp) || empty($addr1) || 
+  if (empty($first) || empty($last) || empty($usern) || empty($comp) || empty($addr1) ||
       empty($zip) || empty($phone) || empty($email) || empty($passwd)) {
     header("Location: ../signup.php?signup=empty");
     exit();
   }
   else {
     //Check if input char are valid
-    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || 
-        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[ a-zA-Z0-9]*$/", $comp) || 
-        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
-        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) || 
-        strlen($zip) > 6 || strlen($phone) > 12 || 
+    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) ||
+        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[ a-zA-Z0-9]*$/", $comp) ||
+        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) ||
+        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) ||
+        strlen($zip) > 6 || strlen($phone) > 12 ||
         substr_count($phone, " ") > 2 || substr_count($phone, "-") > 2) {
       header("Location: ../signup.php?signup=invalid");
       exit();
@@ -176,13 +181,24 @@ elseif (isset($_POST['submitSignupSupplier'])) {
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "SQL error";
+            echo "/'Insert supplier/' SQL error".$sql;
           }
           else {
             //Bind parameters to the place holder
             mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
+
+
+            $sql = "SELECT * FROM supplier WHERE Company = '$comp';";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $_SESSION['s_first'] = $first;
+            $_SESSION['s_last'] = $last;
+            $_SESSION['s_email'] = $email;
+            $_SESSION['s_uid'] = $usern;
+
 
             header("Location: ../index.php?signup=success");
             exit();

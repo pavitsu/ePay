@@ -23,13 +23,13 @@
       <nav>
 
       <?php
-        if(isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
+        if(isset($_SESSION['c_uid']) || isset($_SESSION['s_uid'])) {
           echo '<a href="cart.php" class="pure-button" style="float:right;margin-right:40px;margin-top:12.5px;">
                   <i class="fa fa-shopping-cart fa-lg"  ></i>
                   Cart
                 </a>';
         } else {
-          echo '<a href="signup.php" class="pure-button" onclick="link_to_signup()" style="float:right;margin-right:40px;margin-top:12.5px;">
+          echo '<a href="signup.php" class="pure-button"  style="float:right;margin-right:40px;margin-top:12.5px;">
                   <i class="fa fa-shopping-cart fa-lg"  ></i>
                   Cart
                 </a>';
@@ -37,29 +37,29 @@
       ?>
 
       <span style="font-size:30px;cursor:pointer;float:left;margin-left:12.5px;margin-top:12.5px;" onclick="openNav()">&#9776;</span>
-      
+
         <div class="pageWrapper">
           <ul>
-            <li><a href="index.php">epay</a></li>
+            <li><a href="index.php"><img src="images\epay-webpage.png" style="width:70px;height:70px;"></img></a></li>
           </ul>
           <div class="navLogin"> <!-- wrap login -->
 
             <?php
-              if (isset($_SESSION['c_id']) ) {
+              if (isset($_SESSION['c_uid']) ) {
 				        echo '<a href="editProfile.php" style="float:left;padding-right:20px;">'.$_SESSION['c_uid'].'</a>';
                 echo '<form action="includes/logout.inc.php" method="post"> <!--LOGOUT-->
                         <button type="submit" name="submitLogout">Logout</button>
                       </form>';
-              } elseif(isset($_SESSION['s_id'])) {
+              } elseif(isset($_SESSION['s_uid'])) {
 				        echo '<a href="editProfile.php">'.$_SESSION['s_uid'].'</a>';
                 echo '<form action="includes/logout.inc.php" method="post"> <!--LOGOUT-->
                         <button type="submit" name="submitLogout">Logout</button>
                       </form>';
               } else {
                 echo '<form action="includes/login.inc.php" method="post"> <!--LOGIN-->
-                        <input type="text" name="uid" placeholder="Username">
-                        <input type="password" name="passwd" placeholder="Password">
-                        <button type="submit" name="submitLogin">Login</button>
+                        <input class="form-control"  type="text" name="uid" placeholder="Username">
+                        <input class="form-control"  type="password" name="passwd" placeholder="Password">
+                        <button class="btn btn-default" type="submit" name="submitLogin">Login</button>
                       </form>
                       <a href="signup.php">Sign up</a>';
               }
@@ -69,10 +69,3 @@
         </div> <!-- end pageWrapper -->
       </nav>
     </header>
-
-
-<script>
-  function link_to_signup() {
-      alert("Please Sign up or Log-in before you continue.");
-  }
-</script>

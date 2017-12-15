@@ -1,0 +1,48 @@
+2017-12-15
+06:12:14pm
+
+
+Name: Korn Chotpitakkul
+Shipping Address: 599/116 Klangkrung
+                  Yannawa, Bangkok
+                  
+                  10120
+
+
+Product ID:     17
+Product Name:   iMac
+Product Amount: 1
+Product Price:  200000
+Total Price:    200,000.00
+Refund:         refundYes
+
+Product ID:     11
+Product Name:   Dell XPS
+Product Amount: 1
+Product Price:  42000
+Total Price:    42,000.00
+Refund:         refundYes
+
+Product ID:     9
+Product Name:   iMac Pro
+Product Amount: 1
+Product Price:  240000
+Total Price:    240,000.00
+Refund:         refundYes
+
+Product ID:     7
+Product Name:   charger cable
+Product Amount: 1
+Product Price:  630
+Total Price:    630.00
+Refund:         refundNo
+
+
+
+Total Price:   482,630.00
+
+
+
+
+Use Product ID for refund.
+Refund will be expired for every products within 14 days after purchased.

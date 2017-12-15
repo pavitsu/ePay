@@ -67,6 +67,7 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
 
             // Write purchased detail
     		foreach ($_SESSION['cart'] as $key => $value) {
+                $pid = $value['product_id'];
     			$name = $value['item_name'];
     			$amount = $value['item_amount'];
     			$price = $value['item_price'];
@@ -85,6 +86,7 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
 
                 }
 
+                fwrite($createReceipe, 'Product ID:     '.$pid."\n");
     			fwrite($createReceipe, 'Product Name:   '.$name."\n");
     			fwrite($createReceipe, 'Product Amount: '.$amount."\n");
     			fwrite($createReceipe, 'Product Price:  '.$price."\n");
@@ -98,6 +100,9 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
     		$total = $_SESSION['total'];
             fwrite($createReceipe, "\n\n");
     		fwrite($createReceipe, 'Total Price:   '.$total."\n");
+            fwrite($createReceipe, "\n\n\n\n");
+            fwrite($createReceipe, "Use Product ID for refund.\n");
+            fwrite($createReceipe, "Refund will be expired for every products within 14 days after purchased.");
 
     		fclose($createReceipe);
             unset($_SESSION['total']);

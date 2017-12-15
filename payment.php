@@ -39,7 +39,7 @@
 
 							        <div class="pure-control-group">
 							            <label for="exp">Expire Date</label>
-							            <input name="exp" id="exp" type="text" placeholder="Expire Date">
+							            <input name="exp" id="exp" type="text" placeholder="Expire Date: MM YYYY">
 							        </div>
 
 							        <div class="pure-control-group">

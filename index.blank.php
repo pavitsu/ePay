@@ -5,7 +5,7 @@
 
 <section class="pageContainer">
   <div class="pageWrapper" style="overflow:scroll;">
-    <h2>Customer</h2>
+    <h2 style="color:darkorange;font: normal 30px/1 Tahoma, Geneva, sans-serif;" >Product Lists</h2>
 
     <div style="padding-top: 25px;">
       <?php
@@ -22,8 +22,11 @@
 
           echo          '<input type="hidden" name="hidden_name" value="'.$row['Name'].'">';
           echo          '<input type="hidden" name="hidden_price" value="'.$row['Price'].'">';
-/**/
-          echo          '<input type="submit" name="add" style="margin-top: 5px;margin-left: 24%;" class="btn btn-default" value="Add to Cart">';
+
+
+          echo          '<input type="submit" name="add" style="margin-top: 5px;" class="btn btn-default" value="Add to Cart">';
+
+
           echo        '</div>';
           echo     '</form>';
           echo  '</div>';

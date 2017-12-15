@@ -3,9 +3,9 @@
   include_once('includes/dbh.inc.php');
 ?>
 
-<section class="pageContainer">
-  <div class="pageWrapper">
-    <h2>Edit Profile</h2>
+<section class="pageContainer"style="color:darkorange;">
+  <div class="pageWrapper"style="color:darkorange;">
+    <h2 style="color:darkorange;">Choose your payment</h2>
 
     <?php
       	$cid = $_SESSION['c_id'];
@@ -24,13 +24,31 @@
 			if (isset($_POST['submitCheckout'])) {
 
 		        if ($rowResult['card'] === 0) {
-		          	echo '<div style="max-margin:400px; float:left; padding-right: 100px;">
+		          	echo '<div style="max-margin:400px; float:left; padding-right: 100px;text-align:center;">
 					    	<form class="pure-form pure-form-aligned" action="includes/payment.inc.php?mark=0" method="post">
 							    <fieldset>
+                      <div class="pure-u-1 pure-u-md-1-3">
+                          <label for="type">Credit Type</label>
+                          <select name="type" id="type" class="pure-input-1-4">
+                              <option value="VISA">VISA</option>
+                              <option value="MC">Master Card</option>
+                              <option value="JCB">JCB</option>
+                          </select>
+                      </div>
+                      <div class="pure-u-1 pure-u-md-1-3">
+                              <label for="bank">Issue Bank</label>
+                              <select name="bank" id="bank" class="pure-input-1-4">
+                                  <option value="BBl">Bangkok Bank</option>
+                                  <option value="KTB">Krungthai</option>
+                                  <option value="KBANK">Kasikorn Bank</option>
+                                  <option value="SCB">Siam Commercial</option>
+                              </select>
+                      </div>
 							        <div class="pure-control-group">
 							            <label for="number">Card Number</label>
 							            <input name="number" id="number" type="text" placeholder="Card Number">
 							        </div>
+
 
 							        <div class="pure-control-group">
 							            <label for="cvv">CVV</label>
@@ -47,24 +65,9 @@
 							            <input name="name" id="name" type="text" placeholder="Name">
 							        </div>
 
-							        <div class="pure-u-1 pure-u-md-1-3">
-					                    <label for="bank">Issue Bank</label>
-					                    <select name="bank" id="bank" class="pure-input-1-4">
-					                        <option value="BBl">Bangkok Bank</option>
-					                        <option value="KTB">Krungthai</option>
-					                        <option value="KBANK">Kasikorn Bank</option>
-					                        <option value="SCB">Siam Commercial</option>
-					                    </select>
-					                </div>
 
-					                <div class="pure-u-1 pure-u-md-1-3">
-					                    <label for="type">City</label>
-					                    <select name="type" id="type" class="pure-input-1-4">
-					                        <option value="VISA">VISA</option>
-					                        <option value="MC">Master Card</option>
-					                        <option value="JCB">JCB</option>
-					                    </select>
-					                </div>
+
+
 
 							        <div class="pure-controls">
 							            <label for="cb" class="pure-checkbox">
@@ -93,6 +96,23 @@
 			          	echo '<div style="max-margin:400px; float:left; padding-right: 100px;">
 						    	<form class="pure-form pure-form-aligned" action="includes/payment.inc.php?mark=1" method="post">
 								    <fieldset>
+                        <div class="pure-u-1 pure-u-md-1-3" >
+                            <label for="type">Credit Type</label>
+                            <select name="type" id="type" class="pure-input-1-4">
+                                <option value="VISA">VISA</option>
+                                <option value="MC">Master Card</option>
+                                <option value="JCB">JCB</option>
+                            </select>
+                        </div>
+                        <div class="pure-u-1 pure-u-md-1-3">
+                                <label for="bank">Issue Bank</label>
+                                <select name="bank" id="bank" class="pure-input-1-4">
+                                    <option value="BBl">Bangkok Bank</option>
+                                    <option value="KTB">Krungthai</option>
+                                    <option value="KBANK">Kasikorn Bank</option>
+                                    <option value="SCB">Siam Commercial</option>
+                                </select>
+                        </div>
 								        <div class="pure-control-group">
 								            <label for="number">Card Number</label>';
 						echo	            '<input name="number" id="number" type="text" placeholder="'.$row['CNumber'].'">';
@@ -113,24 +133,9 @@
 						echo	            '<input name="name" id="name" type="text" placeholder="'.$row['HolderName'].'">';
 						echo	        '</div>
 
-								        <div class="pure-u-1 pure-u-md-1-3">
-						                    <label for="bank">Issue Bank</label>
-						                    <select name="bank" id="bank" class="pure-input-1-4">
-						                        <option value="BBl">Bangkok Bank</option>
-						                        <option value="KTB">Krungthai</option>
-						                        <option value="KBANK">Kasikorn Bank</option>
-						                        <option value="SCB">Siam Commercial</option>
-						                    </select>
-						                </div>
 
-						                <div class="pure-u-1 pure-u-md-1-3">
-						                    <label for="type">City</label>
-						                    <select name="type" id="type" class="pure-input-1-4">
-						                        <option value="VISA">VISA</option>
-						                        <option value="MC">Master Card</option>
-						                        <option value="JCB">JCB</option>
-						                    </select>
-						                </div>
+
+
 
 								        <div class="pure-controls">
 								            <label for="cb" class="pure-checkbox">
@@ -152,5 +157,3 @@
 	 	}
 
 	?>
-
-	

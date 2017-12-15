@@ -32,7 +32,7 @@
           </div>';
   }
   else {
-    echo '<div id="mySidenav" class="sidenav">
+    echo '<div id="mySidenav" class="sidenav" >
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="index.php">Popular Product</a>
             <a href="subpage.php?menu=CO">Computer & Laptop</a>
@@ -51,5 +51,3 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <!-- page content that will shift right -->
 <div id="main">
-
-    

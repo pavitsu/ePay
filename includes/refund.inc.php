@@ -4,28 +4,48 @@ include_once('dbh.inc.php');
 session_start();
 
 $pid = $_POST['pid'];
-$category = $_POST['category'];
 $cid = $_POST['cid'];
 
-$sql = "SELECT DATEDIFF(day, GETDATE(), t.TDate) AS DateDiff, t.Customer_ID, t.Product_ID, p.Type FROM transaction t, product p WHERE t.Customer_ID = ? AND t.Product_ID = ? AND p.Type = ?";
-$stmt = mysqli_stmt_init($conn);
-if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../refund.php?return=invalid");
+$sql = "SELECT t.Customer_ID, t.Product_ID, t.TDate, p.RefundAvailable FROM transaction t, product p WHERE t.Customer_ID = $cid AND t.Product_ID = $pid AND p.Product_ID = $pid;";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
+if ($resultCheck < 1) {
+    header("Location: ../refund.php?return=fail");
     exit();
 }
-else {
-    //Bind parameters to the place holder
-    mysqli_stmt_bind_param($stmt, "iis", $cid, $pid, $category);
-    //Run parameters inside database
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
+if ($row = mysqli_fetch_assoc($result)) {
 
-    if ($row['DateDiff'] > 14) {
-		header("Location: ../refund.php?return=return_expire");
+	// Get date different
+	$dat1 = $row['TDate'];
+	$dat2 = date('Y-m-d');
+	$date1 = date_create($dat1);
+	$date2 = date_create($dat2);
+	$datediff = date_diff($date1, $date2);
+
+	// Check if date is londer than 14 days
+	if ($datediff->days > 14) {
+		header("Location: ../refund.php?return=expired");
     	exit();
 	}
+	elseif ($row['RefundAvailable'] == 'No') {
+		header("Location: ../refund.php?return=invalid");
+    	exit();
+	}
+	else {
+		$sql1 = "INSERT INTO refund (Customer_ID, Product_ID, TDate, TTime) VALUES (?, ?, ?, ?);";
+		$stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql1)) {
+           	echo "SQL error";
+        }
+ 		else {
+ 			$date = date("Y-m-d");
+    		$time = date("h:i:sa");
+            mysqli_stmt_bind_param($stmt, "iiss", $cid, $pid, $date, $time);
+            //Run parameters inside database
+            mysqli_stmt_execute($stmt);
 
-    header("Location: ../index.php?return=success");
-    exit();
+            header("Location: ../index.php?return=success");
+            exit();
+        }
+	}
 }

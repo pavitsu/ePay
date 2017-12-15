@@ -46,7 +46,7 @@ CREATE TABLE `payment` (
   `Customer_ID` int(11) NOT NULL,
   `CNumber` varchar(16) NOT NULL,
   `CVV` varchar(3) NOT NULL,
-  `ExpDate` date NOT NULL,
+  `ExpDate` varchar(16) NOT NULL,
   `HolderName` varchar(32) NOT NULL,
   `IssueBank` varchar(32) NOT NULL,
   `Type` varchar(32) NOT NULL
@@ -87,16 +87,22 @@ INSERT INTO `product` (`Product_ID`, `Supplier_ID`, `Image`, `Name`, `Descriptio
 (1, 5, '5a1fe6623d9f81.92133436.png', 'iMac', 'the best', 'CO', 55000, 50, 1, 'refundNo', NULL),
 (2, 5, '5a1ff239cda893.33230456.jpg', 'WD', '1 TB', 'CO', 2200, 99, 1, 'refundYes', NULL),
 (3, 5, '5a20343c684ea6.94870764.jpg', 'LG Ultrafine', 'Apple recommend', 'DS', 6000, 19, 1, 'refundNo', NULL),
-(7, 9, '5a2d8bd9caf357.68211682.jpeg', 'charger cable', 'apple certified', 'AC', 900, 79, 0.7, 'refundNo', '2017-12-11'),
+(7, 9, '5a2d8bd9caf357.68211682.jpeg', 'charger cable', 'apple certified', 'AC', 900, 78, 0.7, 'refundNo', '2017-12-11'),
 (8, 9, '5a2d8bf9ea0e31.00655236.jpeg', 'Magic Mouse', 'Bade by apple', 'AC', 3500, 199, 1, 'refundYes', '2017-12-11'),
-(9, 9, '5a3395e7e8fe56.87574773.jpg', 'iMac Pro', 'God power on your desk', 'CO', 240000, 94, 1, 'refundYes', '2017-12-15'),
-(10, 9, '5a339e82d07634.91518191.png', 'Acer', 'Slim, Not Slow.', 'CO', 22000, 30, 1, 'refundYes', '2017-12-15'),
-(11, 9, '5a33a16cbc3305.68165145.jpg', 'Dell XPS', 'Extreme Performance', 'CO', 42000, 38, 1, 'refundYes', '2017-12-15'),
-(12, 9, '5a33a35d8a1907.27768628.jpg', 'Dell', 'slslslslsllsls', 'CO', 40000, 29, 1, 'refundYes', '2017-12-15'),
-(13, 9, '5a33a4133041c3.26216065.jpg', 'Dell', 'dsfdfsdsdf', 'CO', 40000, 30, 1, 'refundYes', '2017-12-15'),
-(14, 9, '5a33a44144c088.90495501.png', 'Acer', 'dsfdsfdsffs', 'CO', 23232, 22, 1, 'refundYes', '2017-12-15'),
-(16, 9, '5a33a7ab686044.88211022.png', 'Acer', 'Acer', 'CO', 22000, 96, 0.85, 'refundYes', '2017-12-15'),
-(17, 9, '5a33c1169f0731.33741962.jpg', 'iMac', 'apple', 'CO', 200000, 8, 1, 'refundYes', '2017-12-15');
+(9, 9, '5a3395e7e8fe56.87574773.jpg', 'iMac Pro', 'God power on your desk', 'CO', 240000, 93, 1, 'refundYes', '2017-12-15'),
+(10, 9, '5a339e82d07634.91518191.png', 'Acer', 'Slim, Not Slow.', 'CO', 22000, 29, 1, 'refundYes', '2017-12-15'),
+(11, 9, '5a33a16cbc3305.68165145.jpg', 'Dell XPS', 'Extreme Performance', 'CO', 42000, 37, 1, 'refundYes', '2017-12-15'),
+(12, 9, '5a33a35d8a1907.27768628.jpg', 'Dell XPS', 'bla', 'CO', 43000, 24, 0.95, 'refundNo', '2017-12-15'),
+(13, 9, '5a33a4133041c3.26216065.jpg', 'Dell', 'dsfdfsdsdf', 'CO', 40000, 29, 1, 'refundYes', '2017-12-15'),
+(14, 9, '5a33a44144c088.90495501.png', 'Acer', 'dsfdsfdsffs', 'CO', 23232, 20, 1, 'refundYes', '2017-12-15'),
+(16, 9, '5a33a7ab686044.88211022.png', 'Acer', 'Acer', 'CO', 22000, 95, 0.85, 'refundYes', '2017-12-15'),
+(17, 9, '5a33c1169f0731.33741962.jpg', 'iMac', 'apple', 'CO', 200000, 6, 1, 'Yes', '2017-12-15');
+
+CREATE TABLE `refund` (
+  `Refund_ID` int(11) NOT NULL,
+  `Customer_ID` int(11) NOT NULL,
+  `Product_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `supplier` (
   `Supplier_ID` int(11) NOT NULL,
@@ -152,7 +158,7 @@ INSERT INTO `transaction` (`Transaction_ID`, `Customer_ID`, `Supplier_ID`, `Prod
 (18, 5, 9, '9', 1, 240000, '2017-12-15', '10:43:35'),
 (19, 5, 9, '13', 1, 40000, '2017-12-15', '03:07:02'),
 (20, 5, 9, '16', 1, 18700, '2017-12-15', '03:07:02'),
-(21, 5, 9, '17', 1, 200000, '2017-12-15', '03:07:02'),
+(21, 5, 9, '17', 1, 200000, '2017-12-10', '03:07:02'),
 (22, 5, 9, '16', 1, 18700, '2017-12-15', '03:11:17'),
 (23, 5, 9, '11', 1, 42000, '2017-12-15', '03:11:17'),
 (24, 5, 5, '3', 1, 6000, '2017-12-15', '03:11:17'),
@@ -165,7 +171,18 @@ INSERT INTO `transaction` (`Transaction_ID`, `Customer_ID`, `Supplier_ID`, `Prod
 (31, 5, 9, '16', 1, 18700, '2017-12-15', '03:17:31'),
 (32, 5, 9, '8', 1, 3500, '2017-12-15', '03:17:31'),
 (33, 5, 9, '7', 1, 630, '2017-12-15', '03:17:31'),
-(34, 5, 9, '13', 2, 80000, '2017-12-15', '03:17:31');
+(34, 5, 9, '13', 2, 80000, '2017-12-15', '03:17:31'),
+(35, 5, 9, '17', 1, 200000, '2017-12-15', '04:00:54'),
+(36, 5, 9, '13', 1, 40000, '2017-12-15', '04:00:54'),
+(37, 5, 9, '14', 1, 23232, '2017-12-15', '04:00:54'),
+(38, 5, 9, '16', 1, 18700, '2017-12-15', '04:55:16'),
+(39, 5, 9, '12', 1, 40850, '2017-12-15', '04:55:16'),
+(40, 5, 9, '14', 1, 23232, '2017-12-15', '04:55:45'),
+(41, 5, 9, '10', 1, 22000, '2017-12-15', '04:55:45'),
+(42, 5, 9, '17', 1, 200000, '2017-12-15', '06:12:14'),
+(43, 5, 9, '11', 1, 42000, '2017-12-15', '06:12:14'),
+(44, 5, 9, '9', 1, 240000, '2017-12-15', '06:12:14'),
+(45, 5, 9, '7', 1, 630, '2017-12-15', '06:12:14');
 
 
 ALTER TABLE `customer`
@@ -176,6 +193,9 @@ ALTER TABLE `payment`
 
 ALTER TABLE `product`
   ADD PRIMARY KEY (`Product_ID`);
+
+ALTER TABLE `refund`
+  ADD PRIMARY KEY (`Refund_ID`);
 
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`Supplier_ID`);
@@ -190,7 +210,9 @@ ALTER TABLE `payment`
   MODIFY `Card_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 ALTER TABLE `product`
   MODIFY `Product_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `refund`
+  MODIFY `Refund_ID` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `supplier`
   MODIFY `Supplier_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `transaction`
-  MODIFY `Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `Transaction_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;

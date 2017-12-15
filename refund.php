@@ -16,16 +16,7 @@
 
 				        <label for="pid">Product ID</label>
 				        <input name="pid" id="pid" type="number" placeholder="Fill the number">
-				        <span class="pure-form-message">This is a required field.</span>
-
-				        <label for="type">Product Type</label>
-				        <select name="category" id="type">
-				            <option value="CO">Computer & Laptop</option>
-		                    <option value="ST">Storage</option>
-		                    <option value="AU">Audio</option>
-		                    <option value="DS">Display</option>
-		                    <option value="AC">Accessory</option>
-				        </select>';
+				        <span class="pure-form-message">This is a required field.</span>';
 			echo 		'<input type="hidden" name="cid" value="'.$cid.'">';
 			echo 		'<button name="submitRefund" type="submit" class="pure-button pure-button-primary">Submit</button>
 		    		</fieldset>

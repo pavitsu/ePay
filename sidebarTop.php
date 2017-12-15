@@ -24,6 +24,8 @@
             <hr>
             <a href="transaction.php">Transaction</a>
             <hr>
+            <a href="returned.php">Product Returned</a>
+            <hr>
             <a href="#"></a>
             <a href="#"></a>
           </div>';

@@ -22,13 +22,11 @@
 
           echo          '<input type="hidden" name="hidden_name" value="'.$row['Name'].'">';
           echo          '<input type="hidden" name="hidden_price" value="'.$row['Price'].'">';
-/**/
-<<<<<<< HEAD
+
+
           echo          '<input type="submit" name="add" style="margin-top: 5px;" class="btn btn-default" value="Add to Cart">';
-          echo          '<input type="submit" name="add" style="margin-top: 5px;margin-left: 24%;" class="btn btn-default" value="Add to Cart">';
-=======
-          echo          '<input type="submit" name="add" style="margin-top: 5px;margin-left: 24%;" class="btn btn-default" value="Add to Cart">';
->>>>>>> b1fe112690a9f7dcf7a00405f99809ae9c2376f5
+
+
           echo        '</div>';
           echo     '</form>';
           echo  '</div>';

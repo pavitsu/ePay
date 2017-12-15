@@ -1,5 +1,5 @@
-2017-12-11
-09:58:53am
+2017-12-15
+03:11:17pm
 
 
 Name: Korn Chotpitakkul
@@ -9,30 +9,30 @@ Shipping Address: 599/116 Klangkrung
                   10120
 
 
-Product Name:   Magic Mouse
+Product Name:   Acer
 Product Amount: 1
-Product Price:  3500
-Total Price:    3,500.00
+Product Price:  18700
+Total Price:    18,700.00
 Refund:         refundYes
 
-Product Name:   Apple cable
+Product Name:   Dell XPS
 Product Amount: 1
-Product Price:  1600
-Total Price:    1,600.00
-Refund:         refundNo
+Product Price:  42000
+Total Price:    42,000.00
+Refund:         refundYes
 
 Product Name:   LG Ultrafine
 Product Amount: 1
-Product Price:  46000
-Total Price:    46,000.00
+Product Price:  6000
+Total Price:    6,000.00
 Refund:         refundNo
 
 Product Name:   WD
-Product Amount: 5
+Product Amount: 1
 Product Price:  2200
-Total Price:    11,000.00
+Total Price:    2,200.00
 Refund:         refundYes
 
 
 
-Total Price:   62,100.00
+Total Price:   68,900.00

@@ -5,39 +5,7 @@
 
 <section class="pageContainer">
   <div class="pageWrapper">
-    <h2>Add Product</h2><!---->
-
-    <form class="addProduct" action="includes/addproduct.sup.inc.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="img_file">
-      <input type="text" name="name" placeholder="Product Name">
-      <textarea name="description" rows="6" cols="40" placeholder="Describe your product..."></textarea>
-      <p><strong>Type</strong></p>
-      <select name="category">
-        <option value="CO">Computer & Laptop</option>
-        <option value="ST">Storage</option>
-        <option value="AU">Audio</option>
-        <option value="DS">Display</option>
-        <option value="AC">Accessory</option>
-      </select>
-      <input type="number" name="price" placeholder="Price">
-      <input type="number" name="quantity" placeholder="Quantity">
-      <input type="number" name="discount" placeholder="Discount 00%">
-      <h3>Refund Available</h3>
-      <label class="container">Yes
-        <input type="radio" name="radio" value="refundYes" checked="checked">
-        <span class="checkmark"></span>
-      </label>
-      <label class="container">No
-        <input type="radio" name="radio" value="refundNo">
-        <span class="checkmark"></span>
-      </label>
-
-      <button type="submit" name="submitAddProduct">Submit</button>
-    </form>
-
-
-
-
+    <h2>Add Product</h2>
 
     <form class="pure-form" action="includes/addproduct.sup.inc.php" method="post" enctype="multipart/form-data">
         <input type="file" name="img_file">
@@ -63,8 +31,9 @@
                 </select>
             </div>
             <div class="pure-u-1-4">
-                <label for="disc">Discount</label>
+                <label for="discount">Discount</label>
                 <select name="discount" id="disc">
+                    <option value="1">None</option>
                     <option value="0.95">5%</option>
                     <option value="0.90">10%</option>
                     <option value="0.85">15%</option>
@@ -83,28 +52,21 @@
                     <option value="0.20">80%</option>
                     <option value="0.15">85%</option>
                     <option value="0.10">90%</option>
-                    <option value="0.5">95%</option>
+                    <option value="0.05">95%</option>
                 </select>
             </div>
             <div class="pure-u-1-4">
                 <label for="refund">Refund</label>
                 <select name="refund" id="refund">
-                    <option value="refundYes">Yes</option>
-                    <option value="refundNo">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
-            </div>
-
-            
+            </div>  
 
         </fieldset>
 
-        <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Sign in</button>
+        <button type="submit" name="submitAddProduct" class="pure-button pure-button-primary">Submit</button>
     </form>
-
-
-
-
-
 
 
   </div>

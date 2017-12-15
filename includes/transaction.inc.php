@@ -1,11 +1,10 @@
 <?php
 //
+//
 include_once('dbh.inc.php');
 session_start();
 
 $cid = $_SESSION['c_id'];
-$cfirst = $_SESSION['c_first'];
-
 
 foreach ($_SESSION['cart'] as $key => $value) {
 
@@ -31,9 +30,8 @@ foreach ($_SESSION['cart'] as $key => $value) {
 		mysqli_stmt_execute($stmt2);
 	}
 
-    $sql3 = "INSERT INTO transaction (Customer_ID, CustomerName, Supplier_ID, Product_ID, ProductName, Amount, Total, TDate, TTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $sql3 = "INSERT INTO transaction (Customer_ID, Supplier_ID, Product_ID, Amount, Total, TDate, TTime) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $total = $value['item_amount'] * $value['item_price']; // Total price
-    $pname = $row1['Name'];
     $p_amount = $value['item_amount'];
     $date = date("Y-m-d");
     $time = date("h:i:sa");
@@ -41,7 +39,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 	if (!mysqli_stmt_prepare($stmt3, $sql3)) {
 		echo "SQL error";
 	} else {
-		mysqli_stmt_bind_param($stmt3, "isissiiss", $cid, $cfirst, $row1['Supplier_ID'], $value['product_id'], $pname, $p_amount, $total, $date, $time);
+		mysqli_stmt_bind_param($stmt3, "iiiidss", $cid, $row1['Supplier_ID'], $value['product_id'], $p_amount, $total, $date, $time);
 		mysqli_stmt_execute($stmt3);
 	}
 }

@@ -3,13 +3,13 @@
   include_once('sidebarTop.php');
 ?>
 
-<section class="pageContainer" style="color:darkorange;" >
+<section class="pageContainer">
   <div class="pageWrapper">
-    <h2 style="color:darkorange;">My Cart</h2>
+    <h2>Cart</h2>
 
     <div style="clear: both"></div>
     <hr>
-
+    <h2 style="font-size: 28px;">My Order List</h2>
     <div class="table-respondsive">
 
       <table class="table table-bordered">
@@ -22,7 +22,6 @@
         </tr>
 
         <?php
-
           if (!empty($_SESSION['cart'])) {
             $total = 0;
             foreach ($_SESSION['cart'] as $key => $value) {
@@ -41,22 +40,20 @@
             echo    '<td></td>';
             echo '</tr>';
           }
-
         ?>
 
       </table>
 
-      <?php
+      <?php 
         // Try if cart is empty
         // If cart is empty, checkout button will not appear
         try {
           $checkCa = new check();
-          if(isset($_SESSION['cart'])){
-          $checkCa->checkCart($_SESSION['cart']);}
+          $checkCa->checkCart($_SESSION['cart']);  
         }
         catch(Exception $e) {
-          $encode = json_encode($_SESSION['cart']);
-          print_r($encode);
+          //$encode = json_encode($_SESSION['cart']);
+          //print_r($encode);
           $_SESSION['total'] = number_format($total, 2);
           echo $e->getMessage();
         }

@@ -1,0 +1,26 @@
+2017-12-15
+03:16:45pm
+
+
+Name: Korn Chotpitakkul
+Shipping Address: 599/116 Klangkrung
+                  Yannawa, Bangkok
+                  
+                  10120
+
+
+Product Name:   Acer
+Product Amount: 1
+Product Price:  23232
+Total Price:    23,232.00
+Refund:         refundYes
+
+Product Name:   Dell XPS
+Product Amount: 1
+Product Price:  42000
+Total Price:    42,000.00
+Refund:         refundYes
+
+
+
+Total Price:   65,232.00

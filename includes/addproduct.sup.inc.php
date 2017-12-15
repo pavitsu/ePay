@@ -12,7 +12,7 @@ if (isset($_POST['submitAddProduct'])) {
   $price = $_POST['price'];
   $quan = $_POST['quantity'];
   $disc = $_POST['discount'];
-  $refund = $_POST['radio'];
+  $refund = $_POST['refund'];
 
   //Check for empty fields
   if (empty($image) || empty($name) || empty($desc) || 
@@ -22,8 +22,8 @@ if (isset($_POST['submitAddProduct'])) {
   }
   else {
     //Check if input char are valid
-    if (!preg_match("/^[ a-zA-Z0-9]*$/", $name) || !preg_match("/^[ a-zA-Z0-9]*$/", $desc) ||
-        !preg_match("/^[0-9]*$/", $price) || !preg_match("/^[0-9]*$/", $quan) || !preg_match("/^[0-9]*$/", $disc)) {
+    if (!preg_match("/^[ a-zA-Z0-9]*$/", $name) || !preg_match("/^[., a-zA-Z0-9]*$/", $desc) ||
+        !preg_match("/^[0-9]*$/", $price) || !preg_match("/^[0-9]*$/", $quan)) {
       header("Location: ../addproduct.sup.php?addproduct=invalid");
       exit();
     }
@@ -39,7 +39,8 @@ if (isset($_POST['submitAddProduct'])) {
       }
       else {
         //Bind parameters to the place holder
-        mysqli_stmt_bind_param($stmt, "issssiiis", $sid, $image, $name, $desc, $type, $price, $quan, $disc, $refund);
+
+        mysqli_stmt_bind_param($stmt, "issssiids", $sid, $image, $name, $desc, $type, $price, $quan, $disc, $refund);
         //Run parameters inside database
         mysqli_stmt_execute($stmt);
 

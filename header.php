@@ -40,7 +40,7 @@
 
         <div class="pageWrapper">
           <ul>
-            <li><a href="index.php" style="font-size:30px;" >epay</a></li>
+            <li><a href="index.php">epay</a></li>
           </ul>
           <div class="navLogin"> <!-- wrap login -->
 

@@ -5,10 +5,10 @@
 
 <?php
 
-  if (isset($_SESSION['c_uid'])) {
+  if (isset($_SESSION['c_id'])) {
     include_once('index.cus.php');
   }
-  elseif (isset($_SESSION['s_uid'])) {
+  elseif (isset($_SESSION['s_id'])) {
     include_once('index.sup.php');
   }
   else {

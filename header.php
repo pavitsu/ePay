@@ -23,7 +23,7 @@
       <nav>
 
       <?php
-        if(isset($_SESSION['c_uid']) || isset($_SESSION['s_uid'])) {
+        if(isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
           echo '<a href="cart.php" class="pure-button" style="float:right;margin-right:40px;margin-top:12.5px;">
                   <i class="fa fa-shopping-cart fa-lg"  ></i>
                   Cart
@@ -40,7 +40,7 @@
 
         <div class="pageWrapper">
           <ul>
-            <li><a href="index.php"><img src="images\epay-webpage.png" style="width:70px;height:70px;"></img></a></li>
+            <li><a href="index.php">epay</a></li>
           </ul>
           <div class="navLogin"> <!-- wrap login -->
 

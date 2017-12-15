@@ -23,7 +23,7 @@
           echo          '<input type="text" name="amount" class="form-control" value="1">';
           echo          '<input type="hidden" name="hidden_name" value="'.$row['Name'].'">';
           echo          '<input type="hidden" name="hidden_price" value="'.$row['Price'].'">';
-          echo          '<input type="submit" name="add" style="margin-top: 5px;margin-left: 25%;" class="btn btn-default" value="Add to Cart">';
+          echo          '<input type="submit" name="add" style="margin-top: 5px;margin-left: 24%;" class="btn btn-default" value="Add to Cart">';
           echo        '</div>';
           echo     '</form>';
           echo  '</div>';

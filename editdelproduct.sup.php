@@ -71,8 +71,8 @@
                 <div class="pure-u-1-4">
                     <label for="refund">Refund</label>
                     <select name="refund" id="refund">
-                        <option value="refundYes">Yes</option>
-                        <option value="refundNo">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>  
 

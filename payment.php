@@ -5,7 +5,7 @@
 
 <section class="pageContainer">
   <div class="pageWrapper">
-    <h2>Edit Profile</h2>
+    <h2>Payment</h2>
 
     <?php
       	$cid = $_SESSION['c_id'];

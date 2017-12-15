@@ -11,7 +11,7 @@ if (isset($_POST['submitLoginSup'])) {
   //Error handlers
   //Check if inputs are empty
   if (empty($comp) || empty($passwd)) {
-    header("Location: ../index.php?login=empty");
+    header("Location: ../loginSup.php?login=empty");
     exit();
   }
   else {
@@ -19,7 +19,7 @@ if (isset($_POST['submitLoginSup'])) {
     $result = mysqli_query($conn, $sql);
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
-      header("Location: ../index.php?login=error");
+      header("Location: ../loginSup.php?login=error");
       exit();
     }
     else {
@@ -27,7 +27,7 @@ if (isset($_POST['submitLoginSup'])) {
         //De-hashing the password
         $hashedPwdCheck = password_verify($passwd, $row['Password']); //$row['SQL']
         if ($hashedPwdCheck == false) { //wrong password
-          header("Location: ../index.php?login=error");
+          header("Location: ../loginSup.php?login=error");
           exit();
         }
         elseif ($hashedPwdCheck == true) {

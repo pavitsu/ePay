@@ -23,7 +23,7 @@
       <nav>
 
       <?php
-        if(isset($_SESSION['c_id']) || isset($_SESSION['s_id'])) {
+        if(isset($_SESSION['c_id'])) {
           echo '<a href="cart.php" class="pure-button" style="float:right;margin-right:40px;margin-top:12.5px;">
                   <i class="fa fa-shopping-cart fa-lg"  ></i>
                   Cart

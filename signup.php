@@ -1,17 +1,5 @@
-
 <?php
   include_once('header.php');
-  /*for tell user about what happening?*/
-  if(isset($_POST['add'])){/*for when user try add to cart from index.blank.php*/
-    echo '<div class="alert alert-danger"><strong>You shall not pass!</strong> Please sign-up,or log-in before you continue.</div>';
-  }elseif(isset($_GET['signup'])){/*for when user register get sign-up signal to tell them what happening*/
-    $signal=$_GET['signup'];
-    if($signal=='empty'){echo '<div class="alert alert-danger"><strong>You shall not pass!</strong> Please fill every infomation before you sign-up.</div>';}
-    if($signal=='invalid'){echo '<div class="alert alert-danger"><strong>You shall not pass!</strong> Please fill your infomation with a-z, A-Z, 0-9</div>';}
-    if($signal=='nametaken'){echo '<div class="alert alert-danger"><strong>You shall not pass!</strong> This username has already been taken. Please pick another username</div>';}
-    else{;}
-  }
-
 ?>
 
 <section class="pageContainer">

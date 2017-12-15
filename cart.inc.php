@@ -1,6 +1,6 @@
 <?php
 	include_once('includes/functions.inc.php');
-  session_start();
+  	session_start();
 ?>
 
 <?php

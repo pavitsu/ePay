@@ -99,8 +99,7 @@ a {
   text-decoration: none; /* remove underline */
 }
 body { /* entire page */
-  background-color: #fff;
-  opacity: 0.8;
+  opacity: 0.9;
   font-family: "Lato", sans-serif;
 }
 

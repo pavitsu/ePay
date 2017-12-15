@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once('dbh.inc.php');
 include_once('functions.inc.php');
 
@@ -20,49 +19,36 @@ if (isset($_POST['submitSignupCustomer'])) {
   $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
   $passwd = $_POST['passwd'];
 
-  $errorEmpty = false;
-  $errorInvalid = false;
-  $errorEmail = false;
-  $errorUsername = false;
-
   //Check for empty fields
   if (empty($first) || empty($last) || empty($usern) || empty($birth) ||
       empty($addr1) || empty($zip) || empty($phone) || empty($email) || empty($passwd)) {
-    echo '<span class="form-error">Fill in all fields!<span>';
-    $errorEmpty = true;
     header("Location: ../signup.php?signup=empty");
     exit();
   }
   else {
     //Check if input characters and sizes are valid
-    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) ||
-        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[- 0-9]*$/", $birth) ||
-        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) ||
-        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) ||
-        strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 ||
-        substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 ||
+    if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || 
+        !preg_match("/^[a-zA-Z0-9]*$/", $usern) || !preg_match("/^[- 0-9]*$/", $birth) || 
+        !preg_match("/^[ a-zA-Z0-9]*$/", $addr1) || !preg_match("/^[ a-zA-Z0-9]*$/", $addr2) || 
+        !preg_match("/^[0-9]*$/", $zip) || !preg_match("/^[- 0-9]*$/", $phone) || 
+        strlen($zip) > 6 || strlen($phone) > 12 || substr_count($phone, " ") > 2 || 
+        substr_count($phone, "-") > 2 || strlen($birth) > 10 || substr_count($birth, " ") > 2 || 
         substr_count($birth, "-") > 2) {
-      echo '<span class="form-error">Check your input format<span>';
-      $errorInvalid = true;
       header("Location: ../signup.php?signup=invalid");
       exit();
     }
     else {
       //Check for valid email
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorEmail = true;
-        echo '<span class="form-error">Write a valid e-mail<span>';
         header("Location: ../signup.php?signup=email");
         exit();
       }
       else {
         //Check for duplicate username
-        $sql = "SELECT * FROM customer WHERE Username = '$usern'";
+        $sql = "SELECT * FROM customer WHERE Username = '$usern';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
-          echo '<span class="form-error">Username is taken<span>';
-          $errorUsername = true;
           header("Location: ../signup.php?signup=usertaken");
           exit();
         }
@@ -99,7 +85,7 @@ if (isset($_POST['submitSignupCustomer'])) {
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "/'Insert customer/' SQL error".$sql;
+            echo "SQL error";
           }
           else {
             //Bind parameters to the place holder
@@ -108,15 +94,6 @@ if (isset($_POST['submitSignupCustomer'])) {
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
-<<<<<<< HEAD
-            //echo '<span class="form-success">Signup successful<span>';
-=======
-            $_SESSION['c_first'] = $first;
-            $_SESSION['c_last'] = $last;
-            $_SESSION['c_email'] = $email;
-            $_SESSION['c_uid'] = $usern;
-
->>>>>>> 529b735ebdd7a1f865a2f7576c740a470f6e09f8
             header("Location: ../index.php?signup=success");
             exit();
           }
@@ -198,24 +175,13 @@ elseif (isset($_POST['submitSignupSupplier'])) {
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "/'Insert supplier/' SQL error".$sql;
+            echo "SQL error";
           }
           else {
             //Bind parameters to the place holder
             mysqli_stmt_bind_param($stmt, "sssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $city, $zip, $phoneVerified, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
-
-
-            $sql = "SELECT * FROM supplier WHERE Company = '$comp';";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-
-            $_SESSION['s_first'] = $first;
-            $_SESSION['s_last'] = $last;
-            $_SESSION['s_email'] = $email;
-            $_SESSION['s_uid'] = $usern;
-
 
             header("Location: ../index.php?signup=success");
             exit();
@@ -245,31 +211,6 @@ else {
   }
 </style>
 
-<script>
-  $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-gender", "#cus-birth", "#addr1", "#addr2", "#cus-city", "#cus-zip", "#cus-phone", "#cus-passwd").removeClass("input-error");
 
-  var errorEmpty = "<?php echo $errorEmpty; ?>";
-  var errorInvalid = "<?php echo $errorInvalid; ?>";
-  var errorEmail = "<?php echo $errorEmail; ?>";
-  var errorUsername = "<?php echo $errorUsername; ?>";
-
-  if (errorEmpty == true) {
-    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").addClass("input-error");
-  }
-  if (errorInvalid == true) {
-    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").addClass("input-error");
-  }
-  if(errorEmail == true) {
-    $("#cus-email").addClass("input-error");
-  }
-  if(errorUsername == true) {
-    $("#cus-user").addClass("input-error");
-  }
-
-  /*
-  if (errorEmpty == false && errorInvalid == false && errorEmail == false && errorUsername == false) {
-    $("#cus-first", "#cus-last", "#cus-user", "#cus-email", "#cus-birth", "#addr1", "#addr2", "#cus-zip", "#cus-phone", "#cus-passwd").val("");
-  } */
-</script>
 
 

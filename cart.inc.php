@@ -53,7 +53,6 @@
 				echo $e->getMessage();
 			}
 
-			
 		}
 		// First product is added into cart
 		else {

@@ -1,5 +1,5 @@
 <?php
-
+//
 include_once('dbh.inc.php');
 session_start();
 
@@ -9,7 +9,7 @@ $cfirst = $_SESSION['c_first'];
 
 foreach ($_SESSION['cart'] as $key => $value) {
 
-	$sql1 = "SELECT Supplier_ID, Price, Quantity FROM product WHERE Product_ID = ?;";
+	$sql1 = "SELECT Supplier_ID, Name, Price, Quantity FROM product WHERE Product_ID = ?;";
 	$stmt1 = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt1, $sql1)) {
 		echo "SQL error";
@@ -31,15 +31,17 @@ foreach ($_SESSION['cart'] as $key => $value) {
 		mysqli_stmt_execute($stmt2);
 	}
 
-    $sql3 = "INSERT INTO transaction (Customer_ID, CustomerName, Supplier_ID, Product_ID, Total, TDate, TTime) VALUES (?, ?, ?, ?, ?, ?, ?);";
-    $total = $value['item_amount'] * $value['item_price'];
+    $sql3 = "INSERT INTO transaction (Customer_ID, CustomerName, Supplier_ID, Product_ID, ProductName, Amount, Total, TDate, TTime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    $total = $value['item_amount'] * $value['item_price']; // Total price
+    $pname = $row1['Name'];
+    $p_amount = $value['item_amount'];
     $date = date("Y-m-d");
     $time = date("h:i:sa");
     $stmt3 = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt3, $sql3)) {
 		echo "SQL error";
 	} else {
-		mysqli_stmt_bind_param($stmt3, "isisiss", $cid, $cfirst, $row1['Supplier_ID'], $value['product_id'], $total, $date, $time);
+		mysqli_stmt_bind_param($stmt3, "isissiiss", $cid, $cfirst, $row1['Supplier_ID'], $value['product_id'], $pname, $p_amount, $total, $date, $time);
 		mysqli_stmt_execute($stmt3);
 	}
 }

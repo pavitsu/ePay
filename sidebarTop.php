@@ -25,7 +25,7 @@
             <hr>
             <a href="addproduct.sup.php">Add product</a>
             <hr>
-            <a href="#">Transaction</a>
+            <a href="transaction.php">Transaction</a>
             <hr>
             <a href="#"></a>
             <a href="#"></a>

@@ -1,0 +1,38 @@
+2017-12-15
+09:43:49am
+
+
+Name: Chayanit Lertvilairatanaphong
+Shipping Address: narathivat
+                  thammasat
+                  BKK
+                  12121
+
+
+Product Name:   Magic Mouse
+Product Amount: 1
+Product Price:  3500
+Total Price:    3,500.00
+Refund:         refundYes
+
+Product Name:   Apple cable
+Product Amount: 2
+Product Price:  1600
+Total Price:    3,200.00
+Refund:         refundNo
+
+Product Name:   WD
+Product Amount: 4
+Product Price:  2200
+Total Price:    8,800.00
+Refund:         refundYes
+
+Product Name:   iMac
+Product Amount: 1
+Product Price:  55000
+Total Price:    55,000.00
+Refund:         refundNo
+
+
+
+Total Price:   70,500.00

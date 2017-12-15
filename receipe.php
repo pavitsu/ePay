@@ -65,7 +65,6 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
 
             fwrite($createReceipe, "\n\n");
 
-
             // Write purchased detail
     		foreach ($_SESSION['cart'] as $key => $value) {
     			$name = $value['item_name'];
@@ -84,7 +83,6 @@ x+  Creates a new file for read/write. Returns FALSE and an error if file alread
                     $result = mysqli_stmt_get_result($stmt);
                     $row = mysqli_fetch_assoc($result);
 
-                    
                 }
 
     			fwrite($createReceipe, 'Product Name:   '.$name."\n");

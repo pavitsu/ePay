@@ -1,0 +1,26 @@
+2017-12-15
+10:30:22am
+
+
+Name: Chayanit Lertvilairatanaphong
+Shipping Address: narathivat
+                  thammasat
+                  BKK
+                  12121
+
+
+Product Name:   iMac Pro
+Product Amount: 5
+Product Price:  240000
+Total Price:    1,200,000.00
+Refund:         refundYes
+
+Product Name:   iMac
+Product Amount: 1
+Product Price:  55000
+Total Price:    55,000.00
+Refund:         refundNo
+
+
+
+Total Price:   1,255,000.00

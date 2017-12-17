@@ -1,0 +1,27 @@
+2017-12-16
+05:49:40am
+
+
+Name: Thanaruk SIIT
+Shipping Address: siit
+                  siit
+                  BKK
+                  10120
+
+
+Product ID:     22
+Product Name:   Apple Pencil
+Product Amount: 4
+Product Price:  4200
+Total Price:    16,800.00
+Refund:         No
+
+
+
+Total Price:   16,800.00
+
+
+
+
+Use Product ID for refund.
+Refund will be expired for every products within 14 days after purchased.

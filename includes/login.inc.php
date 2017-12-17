@@ -15,8 +15,10 @@ if (isset($_POST['submitLogin'])) {
     exit();
   }
   else {
+
     $sql = "SELECT * FROM customer WHERE Username = '$uid';";
     $result = mysqli_query($conn, $sql);
+    
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck < 1) {
       header("Location: ../index.php?login=error");

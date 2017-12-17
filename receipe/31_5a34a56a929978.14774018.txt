@@ -1,0 +1,41 @@
+2017-12-16
+05:47:38am
+
+
+Name: Thanaruk SIIT
+Shipping Address: siit
+                  siit
+                  BKK
+                  10120
+
+
+Product ID:     27
+Product Name:   Western Digital
+Product Amount: 1
+Product Price:  2200
+Total Price:    2,200.00
+Refund:         No
+
+Product ID:     26
+Product Name:   Bose Soundlink
+Product Amount: 1
+Product Price:  8600
+Total Price:    8,600.00
+Refund:         Yes
+
+Product ID:     25
+Product Name:   LG 5K
+Product Amount: 1
+Product Price:  68400
+Total Price:    68,400.00
+Refund:         No
+
+
+
+Total Price:   79,200.00
+
+
+
+
+Use Product ID for refund.
+Refund will be expired for every products within 14 days after purchased.

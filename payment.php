@@ -160,5 +160,12 @@
 
 	?>
 
+<style>
+	form {
+	    display: inline-block;
+	    text-align: center;
+	    padding-top: 30px;
+	}
+</style>
 
 	

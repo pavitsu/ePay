@@ -39,7 +39,7 @@ if (isset($_POST['submitChangeCus'])) {
         $sql = "SELECT * FROM customer WHERE Username = '$usern'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
-        if ($resultCheck > 0) {
+        if ($resultCheck > 10) {
           header("Location: ../editProfile.php?editProfile=usertaken");
           exit();
         }
@@ -62,7 +62,7 @@ if (isset($_POST['submitChangeCus'])) {
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "ssssssiiss", $first, $last, $usern, $birthday, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "ssssssssss", $first, $last, $usern, $birthday, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 
@@ -118,7 +118,7 @@ elseif (isset($_POST['submitChangeSup'])) {
         $sql = "SELECT * FROM supplier WHERE Company = '$comp';";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
-        if ($resultCheck > 0) {
+        if ($resultCheck > 10) {
           header("Location: ../editProfile.php?editProfile=nametaken");
           exit();
         }
@@ -137,7 +137,7 @@ elseif (isset($_POST['submitChangeSup'])) {
           }
           else {
             //Bind parameters to the place holder
-            mysqli_stmt_bind_param($stmt, "ssssssiiss", $first, $last, $usern, $comp, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
+            mysqli_stmt_bind_param($stmt, "ssssssssss", $first, $last, $usern, $comp, $addr1, $addr2, $zip, $phone, $email, $hashedPwd);
             //Run parameters inside database
             mysqli_stmt_execute($stmt);
 

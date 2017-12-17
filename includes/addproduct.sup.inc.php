@@ -22,8 +22,7 @@ if (isset($_POST['submitAddProduct'])) {
   }
   else {
     //Check if input char are valid
-    if (!preg_match("/^[ a-zA-Z0-9]*$/", $name) || !preg_match("/^[., a-zA-Z0-9]*$/", $desc) ||
-        !preg_match("/^[0-9]*$/", $price) || !preg_match("/^[0-9]*$/", $quan)) {
+    if (!preg_match("/^[0-9]*$/", $price) || !preg_match("/^[0-9]*$/", $quan)) {
       header("Location: ../addproduct.sup.php?addproduct=invalid");
       exit();
     }
